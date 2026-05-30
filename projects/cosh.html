@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CoSH — AI-Driven Narrative RPG Engine | Kara Novotny</title>
+<meta name="description" content="Case study: Chronicles of the Six Houses (CoSH) — an AI-driven narrative RPG with 122 NPCs, 43 state flags, and a custom LLM quest-generation pipeline built in React/TypeScript.">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="../index.html" class="site-name">Kara Novotny</a>
+    <nav class="nav-links">
+      <a href="../index.html">Work</a>
+      <a href="../about.html">About</a>
+      <a href="cosh.html" class="active">CoSH</a>
+      <a href="../samples.html">Writing</a>
+      <a href="../assets/kara-novotny-resume.pdf" download>Resume</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">//</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <h1>Chronicles of the<br>Six Houses <span class="accent">(CoSH)</span></h1>
+      <p class="hero-subtitle">An AI-driven narrative RPG engine — built from scratch in React/TypeScript.</p>
+      <p class="hero-intro">
+        CoSH uses a custom LLM quest-generation pipeline to produce dynamic, branching narrative
+        content across 122 characters, 6 houses, and 43 narrative state flags. The system enforces
+        structured output validation, game-state-aware content routing, and programmatic hallucination
+        prevention — all within a solo-engineered React/TypeScript architecture.
+      </p>
+      <div class="hero-links">
+        <a href="#architecture">Architecture Overview</a>
+        <a href="#prompt-engineering">Prompt Engineering</a>
+        <a href="#validation">LLM Output Validation</a>
+        <a href="#scope">Project Scope</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE CHALLENGE -->
+  <section class="section" id="challenge">
+    <div class="container">
+      <h2 class="section-header">The Challenge</h2>
+      <p>AI-driven narrative generation at scale is hard. When you have 122 characters across 6
+         factions, dozens of quest lines, and player-state-dependent content, the failure modes
+         multiply fast:</p>
+      <ul style="margin-top: 16px; padding-left: 20px;">
+        <li style="margin-bottom: 8px;"><strong>Hallucination:</strong> The LLM invents NPCs, house names, and places that don't exist in the game world</li>
+        <li style="margin-bottom: 8px;"><strong>Lore inconsistency:</strong> Characters reference events that haven't happened, relationships that don't exist, or houses with wrong geography</li>
+        <li style="margin-bottom: 8px;"><strong>State drift:</strong> Multi-step quest chains lose continuity between steps when the LLM doesn't re-anchor canonical data</li>
+        <li style="margin-bottom: 8px;"><strong>Scale collapse:</strong> Prompt context windows overflow when trying to maintain consistency across dozens of simultaneous NPC arcs</li>
+      </ul>
+      <p style="margin-top: 16px;">Standard approaches — single-shot generation, loose prompting, post-hoc editing — don't
+         survive contact with a system this complex. This is an engineering problem, not a writing problem.</p>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE -->
+  <section class="section" id="architecture">
+    <div class="container">
+      <h2 class="section-header">Architecture Overview</h2>
+      <p>CoSH is built as a five-layer pipeline. Each layer has a single responsibility and feeds
+         cleanly into the next:</p>
+
+      <div style="margin-top: 24px;">
+        <div class="project-card" style="border-bottom: none; padding-bottom: 0; margin-bottom: 24px;">
+          <h3>Layer 1 — Data Models &amp; Game State</h3>
+          <p>TypeScript interfaces define every entity: Characters, NPCs, Houses, Quests, Events,
+             Flags, Relationships. A centralized React state hook manages the full game state —
+             player choices, relationship values, unlocked NPCs, completed quests, active flags —
+             and propagates changes to all consumers reactively.</p>
+        </div>
+
+        <div class="project-card" style="border-bottom: none; padding-bottom: 0; margin-bottom: 24px;">
+          <h3>Layer 2 — Prompt Construction Engine</h3>
+          <p>A dedicated prompt builder assembling context from game state: NPC roster filtered by
+             unlock conditions, active flags, relationship values, house lore, festival state, and
+             player history. Output is a structured prompt with canonical data locks (character names,
+             house names, locations) preventing hallucination at the source. Two-step generation
+             (narrative prose + structured JSON outcome) separated into distinct calls.</p>
+        </div>
+
+        <div class="project-card" style="border-bottom: none; padding-bottom: 0; margin-bottom: 24px;">
+          <h3>Layer 3 — LLM Generation (API Layer)</h3>
+          <p>Prompt delivered to the configured LLM provider. Response parsed as structured JSON
+             containing both narrative content (the story prose) and mechanical outcomes (stat changes,
+             flag updates, relationship deltas, quest progression). Two-step pipeline: Step 1 generates
+             narrative, Step 2 resolves outcomes — each with its own schema and validation.</p>
+        </div>
+
+        <div class="project-card" style="border-bottom: none; padding-bottom: 0; margin-bottom: 24px;">
+          <h3>Layer 4 — Outcome Processing &amp; Validation</h3>
+          <p>Structured outcome passed through a strict-key allowlist validator. Only whitelisted
+             field names survive. Unknown fields are silently stripped (no error, no crash, no
+             invalid data reaching game state). Numeric fields checked against minimum floors.
+             NPC references cross-referenced against the canonical roster. Hallucinated names caught
+             and corrected or rejected. Flag updates routed to the condition engine.</p>
+        </div>
+
+        <div class="project-card" style="border-bottom: none; padding-bottom: 0; margin-bottom: 0;">
+          <h3>Layer 5 — UI Rendering</h3>
+          <p>Validated outcomes rendered through React components: the narrative text displayed
+             in-scroll, mechanical effects applied to game state, journal entries created, relationship
+             panels updated. UI is mobile-first with responsive breakpoints, touch-friendly targets,
+             and accessible markup.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROMPT ENGINEERING -->
+  <section class="section" id="prompt-engineering">
+    <div class="container">
+      <h2 class="section-header">Prompt Engineering</h2>
+      <p>The prompt system is the core differentiator between CoSH and a chatbot with a theme.
+         Every prompt enforces five categories of constraint:</p>
+
+      <div style="margin-top: 20px; padding: 20px; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 6px; font-family: var(--font-mono); font-size: 13px; line-height: 1.8;">
+        <div style="color: var(--accent);">1. CANONICAL DATA LOCK</div>
+        <div style="color: var(--text-muted); margin-bottom: 12px;">Character names, house names, locations, relationships — hard-coded into the prompt, never inferred by the LLM. Step 2+ prompts re-anchor this data from the registry, not from memory.</div>
+
+        <div style="color: var(--accent);">2. NAMED CAST FILTER</div>
+        <div style="color: var(--text-muted); margin-bottom: 12px;">Only NPCs that pass isNPCActive() (unlock year, alive/dead status, house membership) can appear in scenes. Prevents generational NPCs from appearing before they're born.</div>
+
+        <div style="color: var(--accent);">3. CONTINUITY RE-ANCHOR</div>
+        <div style="color: var(--text-muted); margin-bottom: 12px;">Multi-step quest chains include a canonical re-anchor block on Steps 2-3+ that restates the quest name, location, host house, and cast — preventing the LLM from inventing "House Veridian" three steps in.</div>
+
+        <div style="color: var(--accent);">4. HOUSE CLARITY NOTES</div>
+        <div style="color: var(--text-muted); margin-bottom: 12px;">Each house gets a custom prompt block: sibling age order, parent relationships, cultural norms, geographic facts. Prevents cross-house NPC hallucination (e.g., a Cindralith patriarch appearing in a Veythorne scene).</div>
+
+        <div style="color: var(--accent);">5. STRUCTURED OUTPUT SCHEMA</div>
+        <div style="color: var(--text-muted);">Every prompt specifies the exact JSON schema the LLM must return. Field names, types, allowed values, and whether each field is required. The schema IS the contract — the LLM generates to it, and the validator enforces it.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALIDATION -->
+  <section class="section" id="validation">
+    <div class="container">
+      <h2 class="section-header">LLM Output Validation</h2>
+      <p>Trusting raw LLM output in a complex game world is how you get a character referencing
+         their dead mother who is alive, or a house war that never happened. CoSH enforces
+         output integrity at three levels:</p>
+
+      <ul style="margin-top: 16px; padding-left: 20px;">
+        <li style="margin-bottom: 10px;"><strong>Schema whitelist:</strong> <code style="font-family: var(--font-mono); font-size: 13px; color: var(--accent-light);">OUTCOME_ALLOWED_KEYS</code> — only pre-registered field names survive processing. Everything else is silently stripped. No errors, no crashes, no invalid data reaching game state.</li>
+        <li style="margin-bottom: 10px;"><strong>Entity cross-reference:</strong> Every NPC name in the LLM's output is checked against the canonical roster. Hallucinated names are either corrected (if close to a real NPC) or rejected (if entirely fictional).</li>
+        <li style="margin-bottom: 10px;"><strong>Flag integrity:</strong> Flag updates are type-checked (string vs boolean vs number) and value-checked against allowed values defined in the 43-entry FLAG_REGISTRY. Invalid flag values are dropped before they reach the condition engine.</li>
+      </ul>
+
+      <p style="margin-top: 16px;">This validation layer is what makes CoSH reliable enough to generate hundreds of
+         quest steps without manual review. The LLM writes. The validator decides what ships.</p>
+    </div>
+  </section>
+
+  <!-- SCOPE -->
+  <section class="section" id="scope">
+    <div class="container">
+      <h2 class="section-header">Project Scope</h2>
+      <div class="skills-grid" style="grid-template-columns: repeat(3, 1fr); gap: 20px;">
+        <div style="text-align: center; padding: 24px; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 6px;">
+          <div style="font-family: var(--font-heading); font-size: 36px; font-weight: 700; color: var(--accent);">122</div>
+          <div style="font-family: var(--font-heading); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-top: 4px;">NPCs</div>
+        </div>
+        <div style="text-align: center; padding: 24px; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 6px;">
+          <div style="font-family: var(--font-heading); font-size: 36px; font-weight: 700; color: var(--accent);">43</div>
+          <div style="font-family: var(--font-heading); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-top: 4px;">State Flags</div>
+        </div>
+        <div style="text-align: center; padding: 24px; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 6px;">
+          <div style="font-family: var(--font-heading); font-size: 36px; font-weight: 700; color: var(--accent);">6</div>
+          <div style="font-family: var(--font-heading); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-top: 4px;">Houses</div>
+        </div>
+        <div style="text-align: center; padding: 24px; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 6px;">
+          <div style="font-family: var(--font-heading); font-size: 36px; font-weight: 700; color: var(--accent);">18+</div>
+          <div style="font-family: var(--font-heading); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-top: 4px;">Romance Quest Lines</div>
+        </div>
+        <div style="text-align: center; padding: 24px; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 6px;">
+          <div style="font-family: var(--font-heading); font-size: 36px; font-weight: 700; color: var(--accent);">5</div>
+          <div style="font-family: var(--font-heading); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-top: 4px;">Shadow Factions</div>
+        </div>
+        <div style="text-align: center; padding: 24px; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 6px;">
+          <div style="font-family: var(--font-heading); font-size: 36px; font-weight: 700; color: var(--accent);">101</div>
+          <div style="font-family: var(--font-heading); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-top: 4px;">Data Files</div>
+        </div>
+      </div>
+      <p style="margin-top: 24px; color: var(--text-muted); font-size: 14px;">
+        Built solo. React/TypeScript. Not in production — case study only.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="mailto:karaashbeck@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/kashbeck">LinkedIn</a>
+        <a href="https://github.com/maughtycat">GitHub</a>
+        <a href="../assets/kara-novotny-resume.pdf" download>Resume PDF</a>
+      </div>
+      <div class="footer-copy">&copy; 2026 Kara Novotny</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+}
+const saved = localStorage.getItem('theme');
+if (saved) document.documentElement.setAttribute('data-theme', saved);
+</script>
+
+</body>
+</html>

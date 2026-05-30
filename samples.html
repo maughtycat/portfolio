@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing Samples | Kara Novotny</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="site-name">Kara Novotny</a>
+    <nav class="nav-links">
+      <a href="index.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="projects/cosh.html">CoSH</a>
+      <a href="samples.html" class="active">Writing</a>
+      <a href="assets/kara-novotny-resume.pdf" download>Resume</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">//</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Writing Samples</h1>
+      <p class="hero-subtitle">Selected work across technical documentation, API guides, and content engineering.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-header">Available Samples</h2>
+
+      <div class="sample-item">
+        <h3>BirdOne User Guide (BONE Manual)</h3>
+        <p><strong>Context:</strong> Comprehensive user guide for Bird's first retail e-scooter, developed
+           in cross-disciplinary collaboration with Brand, Retail, and Vehicle teams. Served as the
+           primary consumer education document for a product launch.</p>
+        <p><strong>What I owned:</strong> Full documentation lifecycle — content structure, instructional
+           writing, visual asset coordination, review cycles with engineering and brand teams.</p>
+        <p><strong>How accuracy was validated:</strong> Scrum demo reviews with SMEs, engineering
+           sign-off on technical procedures, brand review for visual and tonal consistency.</p>
+        <a href="https://cdn.shopify.com/s/files/1/0250/6460/3682/files/BONE_Manual_v6.pdf?404" target="_blank" rel="noopener">View PDF →</a>
+      </div>
+
+      <div class="sample-item">
+        <h3>Attentive Sign-Up Unit Documentation</h3>
+        <p><strong>Context:</strong> Visual documentation piece for Attentive's SMS marketing platform,
+           combining written instructions with annotated screenshots and GIF walkthroughs.</p>
+        <p><strong>What I owned:</strong> Content creation, screenshot capture and enhancement (Snagit),
+           visual layout, text refinement in collaboration with engineers.</p>
+        <p><strong>How accuracy was validated:</strong> Engineering review for functional accuracy,
+           user testing feedback from customer success team.</p>
+        <a href="https://help.attentivemobile.com/hc/en-us/articles/4406470193940-Schedule-a-sign-up-unit" target="_blank" rel="noopener">View Help Article →</a>
+      </div>
+
+      <div class="sample-item">
+        <h3>CoSH NPC Data &amp; Narrative Design (Excerpts)</h3>
+        <p><strong>Context:</strong> Excerpts from the Chronicles of the Six Houses project demonstrating
+           structured content design at scale: NPC character profiles, relationship maps, quest line
+           documentation, and prompt engineering schemas.</p>
+        <p><strong>Note:</strong> Full project data is proprietary to the WIP game. Available excerpts
+           demonstrate the documentation architecture and content design methodology behind the system.</p>
+        <a href="projects/cosh.html">Read CoSH Case Study →</a>
+      </div>
+
+      <div class="sample-item" style="border-bottom: none;">
+        <h3>Redwood Tinder — AI-Powered Product Storytelling</h3>
+        <p><strong>Context:</strong> Internal presentation using generative AI to reimagine Redwood's product
+           suite as character-driven narratives. Each product became a character with quotes, quirks,
+           and visual motifs.</p>
+        <p><strong>Outcome:</strong> Recognized internally for innovation in technical storytelling.
+           Demonstrated how AI can bridge the gap between enterprise software complexity and
+           audience engagement.</p>
+        <a href="https://drive.google.com/file/d/1wPQm9I_qlqZh0mZnEyJUkB90o4hdRd7I/view" target="_blank" rel="noopener">View Presentation →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-header">Professional &amp; Redacted Samples</h2>
+      <p>Additional samples from Redwood Software and Attentive (API guides, integration manuals,
+         release notes, knowledge base articles) are available upon request. Proprietary content
+         can be shared in redacted form or discussed in interviews.</p>
+      <p style="margin-top: 12px;">Contact: <a href="mailto:karaashbeck@gmail.com" style="color: var(--accent-light);">karaashbeck@gmail.com</a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="mailto:karaashbeck@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/kashbeck">LinkedIn</a>
+        <a href="https://github.com/maughtycat">GitHub</a>
+        <a href="assets/kara-novotny-resume.pdf" download>Resume PDF</a>
+      </div>
+      <div class="footer-copy">&copy; 2026 Kara Novotny</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+}
+const saved = localStorage.getItem('theme');
+if (saved) document.documentElement.setAttribute('data-theme', saved);
+</script>
+
+</body>
+</html>
