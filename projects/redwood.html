@@ -237,6 +237,23 @@
       <p style="margin-top: 12px;">Throughout this work, I used Claude Code not just as a writing assistant but as a diagnostic
          tool — auditing the HTML source, MadCap Flare project structure, identifying script fragility,
          and proposing fixes for things that had silently been broken for months or years.</p>
+
+      <h3 style="font-family: var(--font-heading); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 28px 0 16px;">PDF Pipeline</h3>
+      <p>Before the Flare migration, customers could download documentation as PDFs. After the migration,
+         that capability was dropped — and customers complained about it for years. No one had been able
+         to solve it. I worked with Cursor to build an intelligent PDF pipeline that not only generated
+         clean PDF output from the Flare project but dynamically reformatted content and styling based
+         on the output format: PDFs got print-optimized layouts, page breaks, and typography, while HTML
+         got the interactive, expandable experience. Different formats, same source, different rendering
+         logic — solved a years-long customer complaint in weeks.</p>
+
+      <h3 style="font-family: var(--font-heading); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 28px 0 16px;">Release Notes Redesign</h3>
+      <p>The release notes were a sparse table — product name, version number, and a bullet list with no
+         categorization. Customers couldn't tell what actually changed or whether a release affected them.
+         I redesigned the format into a structured "What's New" layout with clear sections for integrations,
+         component-specific enhancements, and tracked fixes with version IDs. I also validated every
+         release note entry against the actual source code, because many of the previous entries were
+         wrong or referenced features that didn't exist in that release.</p>
     </div>
   </section>
 
@@ -314,7 +331,13 @@
       <p style="margin-top: 16px;">I went from googling how to add a MadCap Flare favicon to being the person on the team
          who could parse the source code, optimize DocBot, and answer product questions that even the
          PMs couldn't figure out. That's the difference between someone who writes documentation and
-         someone who engineers it.</p>
+         who engineers it.</p>
+
+      <p style="margin-top: 16px;">I had <strong>never used agentic AI before December 2025</strong>. Within six months, I had
+         built a PDF pipeline, interactive product simulations, role-aware help, searchable release notes,
+         and a complete site redesign — all powered by AI coding agents that were new to me months earlier.
+         I learned, and I learned fast. That trajectory — zero to shipping in months, not years — is what I
+         bring to every team. I don't wait to be told what's possible. I figure it out.</p>
     </div>
   </section>
 
