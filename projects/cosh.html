@@ -42,6 +42,7 @@
         <a href="#prompt-engineering">Prompt Engineering</a>
         <a href="#validation">LLM Output Validation</a>
         <a href="#engineering-thinking">Engineering Thinking</a>
+        <a href="#world">The World</a>
         <a href="#scope">Project Scope</a>
       </div>
     </div>
@@ -170,6 +171,24 @@
 
       <div style="margin-top: 24px;">
         <div class="project-card" style="border-bottom: none; padding-bottom: 0; margin-bottom: 24px;">
+          <h3>The Flag System, Inspired by RPGs I Actually Play</h3>
+          <p>I love narrative RPGs. Baldur's Gate 1, 2, and 3. Mass Effect. Dragon Age. The Witcher.
+             They all use flags and variables to track choices, world states, and character relationships
+             across dozens of hours of gameplay. That is the model I wanted for CoSH. Not a chatbot
+             that forgets what happened last scene. A real narrative engine that tracks player history
+             and gates content accordingly.</p>
+          <p style="margin-top: 12px;">The problem: if you put all that state into the LLM prompt, you blow your token budget
+             fast. Every NPC relationship, every completed quest, every choice the player made, all
+             competing for context window space. The LLM either forgets things or invents continuity
+             that never happened.</p>
+          <p style="margin-top: 12px;">The answer was a flag and variable system that lives outside the prompt. The game state
+             tracks 43 flags across NPC arcs, quest progressions, romance paths, faction standing,
+             and world conditions. The prompt engine reads state and injects only what is relevant
+             to the current scene. The LLM writes the narrative. The flag system enforces
+             continuity. Neither one does the other's job, and the token budget stays manageable.</p>
+        </div>
+
+        <div class="project-card" style="border-bottom: none; padding-bottom: 0; margin-bottom: 24px;">
           <h3>Birthsign Trait Collision Fix</h3>
           <p>All 23 birthsigns mapped to only 5 unique master traits, meaning most characters were
              mechanically identical. The fix required rewriting the mapping so each birthsign produces
@@ -198,7 +217,7 @@
   </section>
 
   <!-- THE WORLD, CODEX PREVIEW -->
-  <section class="section">
+  <section class="section" id="world">
     <div class="container">
       <h2 class="section-header">The World</h2>
       <p>CoSH is a text-based narrative RPG spanning decades of game-time, not months or years like
