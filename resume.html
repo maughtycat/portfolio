@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume | Kara Novotny</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .resume-toggle {
+    display: flex;
+    gap: 4px;
+    margin: 24px 0 32px;
+    padding: 4px;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    width: fit-content;
+  }
+  .resume-toggle button {
+    padding: 8px 20px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-family: var(--font-heading);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+  }
+  .resume-toggle button.active {
+    background: var(--accent);
+    color: var(--bg);
+  }
+  .job-entry {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    transition: border-color 0.2s ease;
+  }
+  .job-entry:hover {
+    border-color: var(--accent);
+  }
+  .job-header {
+    padding: 16px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+  }
+  .job-header h3 {
+    font-size: 16px;
+    margin: 0;
+    color: var(--text);
+  }
+  .job-header .job-meta {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+  .job-header .expand-icon {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 14px;
+    transition: transform 0.2s ease;
+  }
+  .job-header .expand-icon.open {
+    transform: rotate(180deg);
+  }
+  .job-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding: 0 20px;
+  }
+  .job-body.open {
+    max-height: 2000px;
+    padding: 0 20px 16px;
+  }
+  .job-body p {
+    margin: 0 0 8px;
+    font-size: 15px;
+  }
+  .job-body ul {
+    padding-left: 20px;
+    margin: 8px 0 0;
+  }
+  .job-body li {
+    font-size: 15px;
+    margin-bottom: 6px;
+  }
+  .job-oneliner {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+  .narrative-content {
+    display: none;
+  }
+  .narrative-content.active {
+    display: block;
+  }
+  .scannable-content {
+    display: block;
+  }
+  .scannable-content.hidden {
+    display: none;
+  }
+  .resume-footer-note {
+    margin-top: 40px;
+    padding: 20px;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+  .resume-footer-note a {
+    color: var(--accent-light);
+  }
+  @media (max-width: 768px) {
+    .resume-toggle {
+      width: 100%;
+    }
+    .resume-toggle button {
+      flex: 1;
+    }
+    .job-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+    }
+  }
+  @media print {
+    .resume-toggle { display: none !important; }
+    .job-body { max-height: none !important; padding: 0 20px 16px !important; }
+    .narrative-content { display: none !important; }
+    .scannable-content { display: block !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/portfolio/index.html" class="site-name">Kara Novotny</a>
+    <nav class="nav-links">
+      <a href="/portfolio/index.html">Work</a>
+      <a href="/portfolio/about.html">About</a>
+      <a href="/portfolio/projects/cosh.html">CoSH</a>
+      <a href="/portfolio/projects/redwood.html">Redwood</a>
+      <a href="/portfolio/samples.html">Writing</a>
+      <a href="/portfolio/resume.html" class="active">Resume</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">//</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Resume</h1>
+      <p class="hero-subtitle">AI Content Engineer &amp; Technical Writer</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <!-- TOGGLE -->
+      <div class="resume-toggle">
+        <button id="btn-scannable" class="active" onclick="setMode('scannable')">Scannable</button>
+        <button id="btn-narrative" onclick="setMode('narrative')">Narrative</button>
+      </div>
+
+      <!-- CONTACT -->
+      <div style="margin-bottom: 32px;">
+        <p style="font-size: 15px; color: var(--text-muted);">
+          Orange, CA &bull; (714) 317-8359 &bull; <a href="mailto:karaashbeck@gmail.com" style="color: var(--accent-light);">karaashbeck@gmail.com</a><br>
+          <a href="https://www.linkedin.com/in/kashbeck" style="color: var(--accent-light);">linkedin.com/in/kashbeck</a> &bull;
+          <a href="https://github.com/maughtycat" style="color: var(--accent-light);">github.com/maughtycat</a>
+        </p>
+      </div>
+
+      <!-- PROFESSIONAL SUMMARY (both modes) -->
+      <div style="margin-bottom: 32px;">
+        <h2 style="font-family: var(--font-heading); font-size: 16px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-bottom: 12px;">Professional Summary</h2>
+        <p style="font-size: 15px;">AI Content Engineer and Technical Writer specializing in docs-as-code workflows, LLM prompt engineering, and AI-driven content pipelines. Seven years of experience building documentation systems that scale, from structured JSON output validation and multi-step agent pipelines to Markdown-first docs-as-code architectures. Currently building <a href="/portfolio/projects/cosh.html" style="color: var(--accent-light);">Chronicles of the Six Houses (CoSH)</a>, an AI-driven narrative RPG custom-engineered in React/TypeScript. Skilled in translating complex technical systems into clear, user-facing documentation across Agile engineering teams. Proficient in Markdown.</p>
+      </div>
+
+      <!-- SKILLS BAR -->
+      <div style="margin-bottom: 32px;">
+        <h2 style="font-family: var(--font-heading); font-size: 16px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-bottom: 12px;">Core Skills</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <span class="tag">LLM Prompt Engineering</span>
+          <span class="tag">Structured JSON Schemas</span>
+          <span class="tag">MadCap Flare</span>
+          <span class="tag">Claude Code</span>
+          <span class="tag">Cursor</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">React</span>
+          <span class="tag">Docs-as-Code</span>
+          <span class="tag">Accessibility (WCAG)</span>
+          <span class="tag">AI Content Validation</span>
+          <span class="tag">Markdown</span>
+          <span class="tag">UX Writing</span>
+        </div>
+      </div>
+
+      <!-- NARRATIVE MODE -->
+      <div id="narrative-mode" class="narrative-content">
+        <h2 style="font-family: var(--font-heading); font-size: 16px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-bottom: 16px;">Career Narrative</h2>
+
+        <div style="margin-bottom: 28px; padding-left: 20px; border-left: 3px solid var(--border);">
+          <h3 style="font-family: var(--font-heading); font-size: 15px; color: var(--accent-light); margin-bottom: 4px;">Where I started</h3>
+          <p style="font-size: 15px;">My first technical writing job was at Wynne Systems, writing ERP documentation and managing releases. I learned that documentation is only as good as the process behind it, and most processes were broken. I started fixing them.</p>
+        </div>
+
+        <div style="margin-bottom: 28px; padding-left: 20px; border-left: 3px solid var(--border);">
+          <h3 style="font-family: var(--font-heading); font-size: 15px; color: var(--accent-light); margin-bottom: 4px;">Learning to own the whole lifecycle</h3>
+          <p style="font-size: 15px;">At Bird, I wrote the user guide for the company's first retail e-scooter, a cross-disciplinary project involving Brand, Retail, and Vehicle teams. I migrated 500+ content pieces from Dozuki to Zendesk ahead of deadline. I learned that good documentation requires understanding the product at a level most writers never reach.</p>
+        </div>
+
+        <div style="margin-bottom: 28px; padding-left: 20px; border-left: 3px solid var(--border);">
+          <h3 style="font-family: var(--font-heading); font-size: 15px; color: var(--accent-light); margin-bottom: 4px;">Scaling content architecture</h3>
+          <p style="font-size: 15px;">At Attentive, I created help center articles and integration guides for an SMS marketing platform. I implemented single sourcing and modular writing, building content that could be assembled differently for different contexts without duplication. I got UX Writing certified because the boundary between documentation and product design is thinner than most people think.</p>
+        </div>
+
+        <div style="margin-bottom: 28px; padding-left: 20px; border-left: 3px solid var(--accent);">
+          <h3 style="font-family: var(--font-heading); font-size: 15px; color: var(--accent-light); margin-bottom: 4px;">Rebuilding everything (<a href="/portfolio/projects/redwood.html" style="color: var(--accent-light); text-decoration: underline;">Redwood Software</a>)</h3>
+          <p style="font-size: 15px;">Redwood was where I went from writer to engineer. I inherited a Finance Automation help site that customer success was escalating about weekly. I audited the source code with Claude Code. I restructured ~200 articles. I built interactive product simulations, a PDF pipeline, role-aware help, and an entirely new navigation architecture, all within MadCap Flare, an enterprise tool that constrains everything you build. The escalations stopped. A customer success agent told me the mini-TOC was <em style="color: var(--text);">"much better than what we originally suggested."</em></p>
+        </div>
+
+        <div style="margin-bottom: 28px; padding-left: 20px; border-left: 3px solid var(--accent);">
+          <h3 style="font-family: var(--font-heading); font-size: 15px; color: var(--accent-light); margin-bottom: 4px;">Building the future (<a href="/portfolio/projects/cosh.html" style="color: var(--accent-light); text-decoration: underline;">CoSH + AI Content Engineering</a>)</h3>
+          <p style="font-size: 15px;">In December 2025, I started building Chronicles of the Six Houses, an AI-driven narrative RPG with 122 handcrafted NPCs, six houses, and a custom LLM quest-generation pipeline. It's content engineering at scale: structured JSON output validation, 43 narrative state flags, programmatic hallucination prevention, and a five-layer generation pipeline. I'm not just documenting systems anymore. I'm building the systems that generate the content.</p>
+        </div>
+      </div>
+
+      <!-- SCANNABLE MODE -->
+      <div id="scannable-mode" class="scannable-content">
+        <h2 style="font-family: var(--font-heading); font-size: 16px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-bottom: 16px;">Professional Experience</h2>
+
+        <!-- REDWOOD (expanded by default) -->
+        <div class="job-entry">
+          <div class="job-header" onclick="toggleJob(this)" data-expanded="true">
+            <div>
+              <h3>Technical Writer &amp; AI Workflow Engineer, Redwood Software</h3>
+              <div class="job-meta">Aug 2024 &ndash; Jun 2026 &bull; Remote</div>
+            </div>
+            <span class="expand-icon open">&#9660;</span>
+          </div>
+          <div class="job-body open">
+            <p class="job-oneliner">Redesigned the Finance Automation help site (~200 articles) — from weekly CS escalations to zero. Built interactive product simulations, a PDF pipeline, role-aware help, and structured release notes, all within MadCap Flare. <a href="/portfolio/projects/cosh.html" style="color: var(--accent-light);">Read the full case study &rarr;</a></p>
+            <ul>
+              <li>Led complete redesign and content overhaul, auditing source code with Claude Code to reconstruct institutional knowledge after key engineers departed</li>
+              <li>Restructured navigation architecture and home page with role-specific entry points, module cards, and quick links</li>
+              <li>Implemented ADA/WCAG 2.1 AA compliance: skip-to-content, ARIA labels, keyboard navigation</li>
+              <li>Enforced Microsoft Style Guide across all content, capitalization, procedure formatting, inclusive language</li>
+              <li>Built expandable screenshots, sticky table headers, and mini-TOC with anchor links</li>
+              <li>Created interactive product UI simulations with fictional company data for role-based onboarding</li>
+              <li>Implemented role-aware help experience ("Select Your Role" menu) with scoped AI support answers</li>
+              <li>Built intelligent PDF pipeline with format-aware rendering (print-optimized vs. interactive HTML)</li>
+              <li>Validated all release notes against actual source code; redesigned format into structured "What's New" layout</li>
+              <li>Optimized DocBot/RangerAI agent scripts for resilience against doc updates</li>
+              <li>Created Sandbox branch for continuous creative iteration without blocking production releases</li>
+              <li>Eliminated weekly customer success escalations entirely</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ATTENTIVE -->
+        <div class="job-entry">
+          <div class="job-header" onclick="toggleJob(this)" data-expanded="false">
+            <div>
+              <h3>Technical Writer, Attentive</h3>
+              <div class="job-meta">Sep 2021 &ndash; Sep 2023 &bull; Remote</div>
+            </div>
+            <span class="expand-icon">&#9660;</span>
+          </div>
+          <div class="job-body">
+            <p class="job-oneliner">Help center articles and integration guides for SMS marketing platform. Single sourcing, modular writing, UX Writing certified.</p>
+            <ul>
+              <li>Created and maintained help center articles and integration guides for SMS marketing platform serving marketers and business users</li>
+              <li>Implemented single sourcing and modular writing for scalable content architecture</li>
+              <li>UX Writing certified</li>
+              <li>Collaborated with engineering on visual documentation with annotated screenshots and GIF walkthroughs</li>
+              <li>Tools: Google Docs, Confluence, Monday</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BIRD -->
+        <div class="job-entry">
+          <div class="job-header" onclick="toggleJob(this)" data-expanded="false">
+            <div>
+              <h3>Associate Technical Writer, Bird</h3>
+              <div class="job-meta">Jul 2019 &ndash; Sep 2021 &bull; Santa Monica, CA</div>
+            </div>
+            <span class="expand-icon">&#9660;</span>
+          </div>
+          <div class="job-body">
+            <p class="job-oneliner">User guide for first retail e-scooter. 500+ content migration. Company-wide recognition.</p>
+            <ul>
+              <li>Developed comprehensive user guide for BirdOne (first retail e-scooter) in cross-disciplinary collaboration with Brand, Retail, and Vehicle teams</li>
+              <li>Migrated 500+ content pieces from Dozuki to Zendesk ahead of deadline</li>
+              <li>Pioneered instructional GIFs for non-English-speaking markets</li>
+              <li>Recognized company-wide for documentation quality</li>
+              <li>Tools: MadCap Flare, Zendesk</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- WYNNE -->
+        <div class="job-entry">
+          <div class="job-header" onclick="toggleJob(this)" data-expanded="false">
+            <div>
+              <h3>Technical Writer &amp; Release Manager, Wynne Systems</h3>
+              <div class="job-meta">May 2017 &ndash; Jan 2019 &bull; Irvine, CA</div>
+            </div>
+            <span class="expand-icon">&#9660;</span>
+          </div>
+          <div class="job-body">
+            <p class="job-oneliner">ERP software documentation. Release management and cross-departmental coordination.</p>
+            <ul>
+              <li>Developed and maintained ERP software documentation for enterprise resource planning platform</li>
+              <li>Managed release coordination across engineering, QA, and product teams</li>
+              <li>Standardized documentation processes and content templates</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- CoSH -->
+        <div class="job-entry" style="border-color: var(--accent);">
+          <div class="job-header" onclick="toggleJob(this)" data-expanded="false">
+            <div>
+              <h3>AI Content Engineer (Personal Project) . Chronicles of the Six Houses</h3>
+              <div class="job-meta">Dec 2025 &ndash; Present</div>
+            </div>
+            <span class="expand-icon">&#9660;</span>
+          </div>
+          <div class="job-body">
+            <p class="job-oneliner">AI-driven narrative RPG with 122 NPCs, 6 houses, and a custom LLM quest pipeline with structured output validation. Built solo in React/TypeScript. <a href="/portfolio/projects/cosh.html" style="color: var(--accent-light);">Read the full case study &rarr;</a></p>
+            <ul>
+              <li>Designed a multi-step quest pipeline generating branching narrative content with structured JSON output schemas</li>
+              <li>Implemented game-state-aware flag/condition system gating 43 narrative triggers (NPC availability, quest progression, romance paths)</li>
+              <li>Enforced strict output validation (key allowlists, post-processing guards) preventing LLM hallucination in named entities and cross-character relationships</li>
+              <li>Designed regression testing framework and debug logging system (F12 console) for gameplay testing</li>
+              <li>122 handcrafted NPC profiles with unique personalities, secrets, relationships, and life arcs</li>
+              <li>Built solo in React/TypeScript</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+      <!-- END SCANNABLE -->
+
+      <!-- EDUCATION -->
+      <div style="margin-top: 32px;">
+        <h2 style="font-family: var(--font-heading); font-size: 16px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-bottom: 12px;">Education</h2>
+        <p style="font-size: 15px;"><strong>BA in Screenwriting, Cum Laude</strong> . Chapman University</p>
+      </div>
+
+      <!-- FOOTER NOTE -->
+      <div class="resume-footer-note">
+        Looking for a PDF? It's available upon request, just <a href="mailto:karaashbeck@gmail.com">ask</a>.
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="mailto:karaashbeck@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/kashbeck">LinkedIn</a>
+        <a href="https://github.com/maughtycat">GitHub</a>
+        <a href="https://www.youtube.com/@SkylarkFinchie">YouTube</a>
+      </div>
+      <div class="footer-copy">&copy; 2026 Kara Novotny</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+}
+const saved = localStorage.getItem('theme');
+if (saved) document.documentElement.setAttribute('data-theme', saved);
+
+function setMode(mode) {
+  const scannable = document.getElementById('scannable-mode');
+  const narrative = document.getElementById('narrative-mode');
+  const btnScan = document.getElementById('btn-scannable');
+  const btnNarr = document.getElementById('btn-narrative');
+
+  if (mode === 'scannable') {
+    scannable.classList.remove('hidden');
+    narrative.classList.remove('active');
+    btnScan.classList.add('active');
+    btnNarr.classList.remove('active');
+  } else {
+    scannable.classList.add('hidden');
+    narrative.classList.add('active');
+    btnNarr.classList.add('active');
+    btnScan.classList.remove('active');
+  }
+}
+
+function toggleJob(header) {
+  const body = header.nextElementSibling;
+  const icon = header.querySelector('.expand-icon');
+  const isExpanded = header.getAttribute('data-expanded') === 'true';
+
+  if (isExpanded) {
+    body.classList.remove('open');
+    icon.classList.remove('open');
+    header.setAttribute('data-expanded', 'false');
+  } else {
+    body.classList.add('open');
+    icon.classList.add('open');
+    header.setAttribute('data-expanded', 'true');
+  }
+}
+</script>
+
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Redwood Finance Automation — Case Study | Kara Novotny</title>
+<title>Redwood Finance Automation, Case Study | Kara Novotny</title>
 <meta name="description" content="Case study: How I redesigned the Redwood Finance Automation help site from a broken, unnavigable mess into a fully accessible, searchable, role-aware documentation portal.">
 <link rel="stylesheet" href="/portfolio/css/style.css">
 <style>
@@ -90,7 +90,7 @@
       <a href="/portfolio/projects/cosh.html">CoSH</a>
       <a href="/portfolio/projects/redwood.html" class="active">Redwood</a>
       <a href="/portfolio/samples.html">Writing</a>
-      <a href="/portfolio/assets/kara-novotny-resume.pdf" download>Resume</a>
+      <a href="/portfolio/resume.html">Resume</a>
       <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">//</button>
     </nav>
   </div>
@@ -98,17 +98,20 @@
 
 <main>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="container">
       <h1>Redwood Finance<br>Automation <span class="accent">Help Site</span></h1>
-      <p class="hero-subtitle">From broken, unnavigable documentation to a fully accessible, searchable, role-aware help portal — single-handedly.</p>
+      <p class="hero-subtitle">From broken, unnavigable documentation to a fully accessible, searchable, role-aware help portal, single-handedly.</p>
       <p class="hero-intro">
-        I inherited a Finance Automation help site that was flat HTML with fragile scripts, zero accessibility,
-        no style guide enforcement, and a navigation structure so broken that customer success was escalating
-        to me weekly. Over two years, I completely redesigned and rebuilt it — auditing every page with AI,
-        rewriting content, architecting interactive onboarding experiences, and implementing role-aware help
-        before I ever saw another CS escalation again.
+        I inherited a Finance Automation help site built inside MadCap Flare, an enterprise
+        help-authoring tool with its own styling system, scripting layer, and output pipeline.
+        The content had been migrated in, but the migration had left structural problems:
+        fragile scripts, broken navigation, no accessibility, and no style guide enforcement.
+        Customer success was escalating weekly. Over two years, I completely redesigned and
+        rebuilt it, auditing source code with AI, restructuring ~200 articles, implementing
+        interactive onboarding experiences, and building a role-aware help system. Everything
+        authored inside Flare, within the constraints of an enterprise tool that doesn't
+        make anything easy.
       </p>
       <div class="hero-links">
         <a href="#situation">The Situation</a>
@@ -119,7 +122,6 @@
     </div>
   </section>
 
-  <!-- STATS -->
   <section class="section" style="border-top: none; padding-top: 40px;">
     <div class="container">
       <div class="case-study-stats">
@@ -128,7 +130,7 @@
           <div class="stat-label">Help Articles</div>
         </div>
         <div class="stat-card">
-          <div class="stat-number">0→1</div>
+          <div class="stat-number">0&rarr;1</div>
           <div class="stat-label">ADA Compliance</div>
         </div>
         <div class="stat-card">
@@ -139,31 +141,31 @@
     </div>
   </section>
 
-  <!-- SITUATION -->
   <section class="section" id="situation">
     <div class="container">
       <h2 class="section-header">The Situation</h2>
-      <p>I didn't build this documentation site. A freelancer had migrated the content into MadCap Flare and
-         done it poorly — missing pages, blurry unzoomable screenshots, bad URLs, typos everywhere, and
-         fragile scripts that would silently fail and cost me hours of troubleshooting to diagnose. When
-         I arrived, the help site was a flat HTML mess with no style guide enforcement, no accessibility
-         considerations whatsoever, and a search function that returned garbage.</p>
+      <p>The Finance Automation help site had been migrated into MadCap Flare, an enterprise
+         help-authoring platform with a steep learning curve, its own CSS-like styling system,
+         and a scripting layer that breaks silently when anything changes. The migration itself
+         had been complex: content moved between project structures, topic IDs remapped,
+         stylesheets inherited dependencies from the old project. The result was a site with
+         fragile scripts, broken navigation paths, zero accessibility considerations, and no
+         style guide enforcement. Customer success was escalating to me weekly.</p>
 
-      <p style="margin-top: 16px;">The previous footer just said "Spotted a typo? Email..." — for enterprise software serving
-         finance teams closing billion-dollar books. The home page was a wall of dense paragraphs with no
-         clear entry point for a new user. The Getting Started guide was written like a reference document,
-         not an onboarding flow. And the TOC navigation made it nearly impossible to find anything: clicking
-         a section in the side nav didn't expand that section — it showed a proxy of the entire site menu
-         instead.</p>
+      <p style="margin-top: 16px;">Several of the Finance Automation engineers had departed, and institutional knowledge
+         went with them. I reconstructed understanding of what the product actually did by
+         auditing the source code with AI tools, first Gemini Gems, then Claude Code and
+         Cursor. Sometimes the product managers came to me because I'd become the person
+         who understood the system end to end.</p>
 
-      <p style="margin-top: 16px;">On top of all this, many of the Finance Automation engineers had left or knowledge had walked
-         out the door. I was left parsing source code with help from AI tools (initially Gemini Gems, later
-         Claude Code and Cursor) to understand what the product actually did — sometimes the product
-         managers came to me because I'd become the institutional knowledge for how the system worked.</p>
+      <p style="margin-top: 16px;">MadCap Flare presented its own challenges. Everything, every navigation component,
+         every interactive demo, every formatting enhancement, every stylesheet override, had
+         to be authored inside Flare's architecture. There's no exporting to hand-coded HTML.
+         The tool constrains what you can build and how you build it. Every redesign decision
+         I made had to be implementable within that system.</p>
     </div>
   </section>
 
-  <!-- TOC BEFORE/AFTER -->
   <section class="section" id="what-changed">
     <div class="container">
       <h2 class="section-header">What Changed</h2>
@@ -172,84 +174,90 @@
       <p>The side nav went from a flat, confusing dump of every topic to a properly structured hierarchy
          that actually reflected how users think about the product. Added new sections that never existed:
          Integrations, Connectors &amp; Extensions, Reference, About. Added cross-reference links to every
-         new topic I created. Replaced the unprofessional footer with a proper branded one: "© Redwood Software.
+         new topic I created. Replaced the unprofessional footer with a proper branded one: "&copy; Redwood Software.
          All rights reserved." — with links to Documentation Portal, Redwood University, and Support.</p>
 
       <div class="toc-comparison">
-        <div class="old">Finance Automation: 2023.3<br>Getting Started<br>What's new<br>Balance Sheet CertificationBalance Sheet Certification<br>Task ManagementTask Management<br>Journal EntryJournal Entry<br>Operation ModulesOperation Modules<br>FinanceAutomation Components</div>
-        <div class="arrow">▼ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ▼</div>
+        <div class="old">Finance Automation: 2023.3<br>Getting Started<br>What's new<br>Balance Sheet Certification<br>Task Management<br>Journal Entry<br>Operation Modules<br>FinanceAutomation Components</div>
+        <div class="arrow">&#9660; &#8212; &#8212; &#8212; &#8212; &#8212; &#8212; &#8212; &#8212; &#8212; &#8212; &#8212; &#8212; &#8212; &#8212; &#8212; &#8212; &#8212; &#8212; &#9660;</div>
         <div class="new">Finance Automation: 2026.2<br>What's new<br>Getting started<br>On-premises administration<br>Balance sheet certification<br>Task management<br>Journal entry<br>Operation modules<br>Integrations<br>Connectors and extensions<br>Reference<br>About<br>Redwood Documentation Portal<br>Visit Redwood University</div>
       </div>
 
-      <h3 style="font-family: var(--font-heading); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 28px 0 16px;">Before &amp; After — Key Problems Solved</h3>
+      <h3 style="font-family: var(--font-heading); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 28px 0 16px;">Before &amp; After</h3>
       <div class="before-after">
         <div class="ba-box before">
           <h4>Before</h4>
           <ul>
-            <li>Blurry, tiny screenshots with no zoom capability</li>
+            <li>Blurry, tiny screenshots with no zoom</li>
             <li>No alt text anywhere</li>
             <li>No ADA/WCAG compliance</li>
-            <li>Typos throughout (no style guide enforcement)</li>
+            <li>Typos throughout, no style guide</li>
             <li>SEO-unfriendly metadata</li>
-            <li>No favicon (out of all Redwood help sites, none had one)</li>
-            <li>Flat home page — dense paragraphs, no clear user entry point</li>
-            <li>Tables with no sticky headers, hard to read</li>
-            <li>No anchor links on long pages</li>
-            <li>Release notes unvalidated against source code</li>
-            <li>Fragile DocBot (now RangerAI) scripts sensitive to any doc update</li>
+            <li>No favicon</li>
+            <li>Flat home page, no clear entry point</li>
+            <li>Tables with no sticky headers</li>
+            <li>No anchor links</li>
+            <li>Release notes unvalidated</li>
+            <li>Fragile DocBot scripts</li>
             <li>Broken search</li>
           </ul>
         </div>
         <div class="ba-box after">
           <h4>After</h4>
           <ul>
-            <li>Screenshots expandable on click/hover</li>
+            <li>Screenshots expandable on click</li>
             <li>Full alt text on every image</li>
-            <li>ADA compliant (WCAG 2.1 AA skip-to-content, ARIA labels, keyboard nav)</li>
-            <li>MS Style Guide enforced across all content</li>
-            <li>Proper metadata for SEO and improved search</li>
-            <li>Favicon implemented for all Redwood help sites</li>
-            <li>Home page redesigned with role-specific "Where to start," module cards, and quick links</li>
-            <li>Sticky table headers for long scrolling tables</li>
-            <li>Right-aligned mini TOC with anchor links on large pages</li>
-            <li>All release notes validated against actual source code</li>
-            <li>DocBot/RangerAI scripts optimized and resilient to doc updates</li>
-            <li>Search improved through better content structure and metadata</li>
+            <li>ADA compliant (WCAG 2.1 AA)</li>
+            <li>Microsoft Style Guide enforced</li>
+            <li>Proper metadata, improved search</li>
+            <li>Favicon implemented</li>
+            <li>Role-specific entry points, module cards</li>
+            <li>Sticky table headers</li>
+            <li>Mini TOC with anchor links</li>
+            <li>Release notes validated against source</li>
+            <li>DocBot scripts hardened</li>
+            <li>Search fixed</li>
           </ul>
         </div>
       </div>
 
+      <h3 style="font-family: var(--font-heading); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 28px 0 16px;">Style Guide Enforcement</h3>
+      <p>The <strong>Microsoft Style Guide</strong> is the industry-standard style guide for technical
+         documentation, covering everything from capitalization and procedure formatting to inclusive
+         language and UI element naming. It's a comprehensive document, and enforcing it consistently
+         across ~200 articles is a non-trivial content operation. I audited every page against the style
+         guide, corrected violations, and built a Gemini Gem (FlareGuard) to automate enforcement going
+         forward.</p>
+
       <h3 style="font-family: var(--font-heading); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 28px 0 16px;">Content Audit &amp; Rewrite</h3>
-      <p>I audited the entire help site using Claude Code — reading every page flagging content for me,
+      <p>I audited the entire help site using Claude Code, reading every page flagging content for me,
          cross-referencing against source code where documentation was wrong or missing, and identifying
          gaps where entire topics had never been written. The scope: every article across Balance Sheet
          Certification, Task Management, Journal Entry, Operation Modules, Integrations, Connectors &amp;
          Extensions, Administration, and Reference.</p>
 
       <p style="margin-top: 12px;">A "Getting Started" section that read like an afterthought became a proper onboarding
-         guide: Before you begin → Understand your role → Sign in → Home screen → Sidebar menu →
-         Application area → Next steps (role-specific). Just like a new employee walking through their
+         guide: Before you begin &rarr; Understand your role &rarr; Sign in &rarr; Home screen &rarr; Sidebar menu &rarr;
+         Application area &rarr; Next steps (role-specific). Just like a new employee walking through their
          first day.</p>
 
       <p style="margin-top: 12px;">I created a centralized glossary organized by letter, added anchor links that auto-apply
          throughout the site, added cross-references between related topics, and cleaned up bad URLs
          and formatting to match Redwood's own brand style guides.</p>
 
-      <p style="margin-top: 12px;">Throughout this work, I used Claude Code not just as a writing assistant but as a diagnostic
-         tool — auditing the HTML source, MadCap Flare project structure, identifying script fragility,
-         and proposing fixes for things that had silently been broken for months or years.</p>
+      <p style="margin-top: 12px;">Throughout this work, I used Claude Code as more than a writing assistant. It was a diagnostic tool, auditing the HTML source, the Flare project structure, and flagging content that had silently been broken for months or years.</p>
 
       <h3 style="font-family: var(--font-heading); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 28px 0 16px;">PDF Pipeline</h3>
       <p>Before the Flare migration, customers could download documentation as PDFs. After the migration,
-         that capability was dropped — and customers complained about it for years. No one had been able
+         that capability was dropped, and customers complained about it for years. No one had been able
          to solve it. I worked with Cursor to build an intelligent PDF pipeline that not only generated
          clean PDF output from the Flare project but dynamically reformatted content and styling based
          on the output format: PDFs got print-optimized layouts, page breaks, and typography, while HTML
          got the interactive, expandable experience. Different formats, same source, different rendering
-         logic — solved a years-long customer complaint in weeks.</p>
+         logic, solved a years-long customer complaint in weeks.</p>
 
       <h3 style="font-family: var(--font-heading); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 28px 0 16px;">Release Notes Redesign</h3>
-      <p>The release notes were a sparse table — product name, version number, and a bullet list with no
+      <p>The release notes were a sparse table, product name, version number, and a bullet list with no
          categorization. Customers couldn't tell what actually changed or whether a release affected them.
          I redesigned the format into a structured "What's New" layout with clear sections for integrations,
          component-specific enhancements, and tracked fixes with version IDs. I also validated every
@@ -258,18 +266,17 @@
     </div>
   </section>
 
-  <!-- CREATIVE PIECES -->
   <section class="section" id="creative">
     <div class="container">
       <h2 class="section-header">The Creative Pieces</h2>
-      <p>What I'm proudest of lives on the Sandbox branch — the creative work that made it past
+      <p>What I'm proudest of lives on the Sandbox branch, the creative work that made it past
          design review but couldn't all ship to production due to release timelines.</p>
 
       <div style="margin-top: 24px;">
         <div class="project-card" style="border-bottom: none; padding-bottom: 0; margin-bottom: 32px;">
           <h3>Interactive Product Simulations ("Mini-UI Demos")</h3>
           <p>The hardest part of documenting Finance Automation was that screenshots were a maintenance
-             nightmare — they went out of date with every UI change, weren't available for features still
+             nightmare, they went out of date with every UI change, weren't available for features still
              in development, couldn't be easily translated, and didn't show <em>how</em> the product worked,
              just what it looked like statically.</p>
           <p style="margin-top: 12px;">So I built interactive, playable simulations of product features directly into the help
@@ -278,7 +285,7 @@
              with three employees (Preparer, Supervisor, New Employee) and populated the demos with
              realistic mock data that simultaneously served as onboarding for the hypothetical employee
              and showed best-practice product usage. Each interactive component had <strong>(i) info bubbles</strong>
-             that redirected users to the relevant help page — so the simulation and the documentation
+             that redirected users to the relevant help page, so the simulation and the documentation
              were one continuous experience.</p>
           <p style="margin-top: 12px;">This came from a simple insight: the best documentation doesn't describe what a button
              looks like. It shows you what happens when you press it.</p>
@@ -286,8 +293,8 @@
 
         <div class="project-card" style="border-bottom: none; padding-bottom: 0; margin-bottom: 32px;">
           <h3>Role-Aware Help Experience</h3>
-          <p>Finance Automation serves four distinct user roles — Preparer, Approver, Administrator,
-             and Viewer/Analyst — and the help documentation was written for all of them simultaneously,
+          <p>Finance Automation serves four distinct user roles, Preparer, Approver, Administrator,
+             and Viewer/Analyst, and the help documentation was written for all of them simultaneously,
              which meant it was useful to none of them specifically.</p>
           <p style="margin-top: 12px;">I implemented a <strong>"Select Your Role"</strong> menu with brief descriptions under each role.
              Once a user selected their role, it communicated to the RangerAI support agent so that every
@@ -295,8 +302,8 @@
              approvals would get a "you don't have that permission" message with a link to their actual
              workflow instead.</p>
           <p style="margin-top: 12px;">On my Sandbox branch, where I couldn't get RangerAI permissions, I built a parallel
-             system: a <strong>"Quick Questions" menu</strong> that intelligently populated with 3+ contextually
-             relevant questions every time a user navigated to a new page — questions specific to their
+             system: a <strong>"Quick Questions"</strong> menu that intelligently populated with 3+ contextually
+             relevant questions every time a user navigated to a new page, questions specific to their
              chosen role. My eventual plan was a full topic-tagging system to filter every help page by
              role, but I wasn't able to implement that before the project ended.</p>
         </div>
@@ -306,9 +313,9 @@
           <p>I created a dedicated Sandbox branch of the website specifically so I could design, prototype,
              and iterate on improvements without blocking the production release cycle. This is where
              the interactive demos, role-aware navigation, and most of my creative experiments lived.
-             It's the version of the site I'm most proud of — the truest expression of what help
+             It's the version of the site I'm most proud of, the truest expression of what help
              documentation could be when you're not constrained by production timelines.</p>
-          <p style="margin-top: 12px;">I created it because I'm someone who always wants to improve things — not because
+          <p style="margin-top: 12px;">I created it because I'm someone who always wants to improve things, not because
              anyone asked me to. That instinct to continuously build and experiment, even when there's
              no immediate requirement for it, is the throughline of how I approach documentation work.</p>
         </div>
@@ -316,13 +323,12 @@
     </div>
   </section>
 
-  <!-- IMPACT -->
   <section class="section" id="impact">
     <div class="container">
       <h2 class="section-header">Impact</h2>
       <p>When I started, customer success was escalating to me <strong>every single week</strong> for
          documentation updates. When I finished, those escalations stopped. Completely. Customer success
-         tickets were handled through Jira in a timely fashion — and no one came to me directly anymore.</p>
+         tickets were handled through Jira in a timely fashion, and no one came to me directly anymore.</p>
 
       <p style="margin-top: 16px;">My bi-weekly meetings with the Finance Automation product managers went from
          reactive firefighting sessions to productive roadmap discussions. Several PMs told me directly
@@ -336,54 +342,16 @@
 
       <p style="margin-top: 16px;">I had <strong>never used agentic AI before December 2025</strong>. Within six months, I had
          built a PDF pipeline, interactive product simulations, role-aware help, searchable release notes,
-         and a complete site redesign — all powered by AI coding agents that were new to me months earlier.
-         I learned, and I learned fast. That trajectory — zero to shipping in months, not years — is what I
+         and a complete site redesign, all powered by AI coding agents that were new to me months earlier.
+         I learned, and I learned fast. That trajectory, zero to shipping in months, not years, is what I
          bring to every team. I don't wait to be told what's possible. I figure it out.</p>
     </div>
   </section>
 
-  <!-- SCOPE SUMMARY -->
   <section class="section">
     <div class="container">
       <h2 class="section-header">Full Scope</h2>
-      <div class="before-after">
-        <div class="ba-box after" style="border-color: var(--border);">
-          <h4 style="color: var(--text-muted);">What I Did</h4>
-          <ul>
-            <li>Full content audit of entire help site (~200 articles) using Claude Code</li>
-            <li>Redesign of navigation architecture (TOC restructuring)</li>
-            <li>Home page restructured with role-specific entry points, module cards, quick links</li>
-            <li>Getting Started rewritten as proper onboarding flow (Before you begin → Role → Sign in → Next steps)</li>
-            <li>All screenshots made expandable; alt text added to every image</li>
-            <li>ADA/WCAG 2.1 AA compliance: skip links, ARIA labels, keyboard navigation</li>
-            <li>MS Style Guide enforcement across all content, proper capitalization, formatting</li>
-            <li>Metadata added for SEO; search improved</li>
-            <li>Glossary created (alphabetical organization)</li>
-            <li>Anchor links and mini-TOC on long pages</li>
-            <li>Sticky table headers for data-heavy tables</li>
-            <li>Release notes validated against actual source code</li>
-            <li>DocBot/RangerAI agent scripts optimized for resilience</li>
-            <li>Favicon implemented across all Redwood help sites</li>
-            <li>Cross-reference links added throughout</li>
-            <li>Interactive product UI simulations (Sandbox)</li>
-            <li>Role-aware help with Select Role menu (Sandbox)</li>
-            <li>Quick Questions context menu per role (Sandbox)</li>
-            <li>Dedicated Sandbox branch for continuous creative iteration</li>
-            <li>Redwood Footer redesigned</li>
-          </ul>
-        </div>
-        <div class="ba-box after" style="border-color: var(--border);">
-          <h4 style="color: var(--text-muted);">Tech &amp; Tools</h4>
-          <ul>
-            <li>MadCap Flare</li>
-            <li>Claude Code (source code audit, content analysis, diagnostics)</li>
-            <li>Cursor (content writing and editing)</li>
-            <li>HTML / CSS / JavaScript</li>
-            <li>Jira (ticket management)</li>
-            <li>Confluence</li>
-          </ul>
-        </div>
-      </div>
+      <p>I audited ~200 articles with Claude Code, restructured the navigation and home page, rewrote Getting Started as a proper onboarding flow, and made every screenshot expandable with full alt text. The site went from zero ADA compliance to WCAG 2.1 AA. I enforced the Microsoft Style Guide across every page, added metadata for SEO, built a glossary, and put anchor links and a mini-TOC on long pages. Release notes were validated against source code. DocBot scripts were hardened. I built interactive product simulations, a role-aware help system, and a Quick Questions context menu, all on a Sandbox branch so I could iterate without blocking production. Everything was authored inside MadCap Flare. Tools: Claude Code, Cursor, HTML/CSS/JS, Jira, Confluence.</p>
     </div>
   </section>
 
@@ -396,7 +364,7 @@
         <a href="mailto:karaashbeck@gmail.com">Email</a>
         <a href="https://www.linkedin.com/in/kashbeck">LinkedIn</a>
         <a href="https://github.com/maughtycat">GitHub</a>
-        <a href="/portfolio/assets/kara-novotny-resume.pdf" download>Resume PDF</a>
+        <a href="https://www.youtube.com/@SkylarkFinchie">YouTube</a>
       </div>
       <div class="footer-copy">&copy; 2026 Kara Novotny</div>
     </div>

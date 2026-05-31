@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CoSH — AI-Driven Narrative RPG Engine | Kara Novotny</title>
+<title>CoSH, AI-Driven Narrative RPG Engine | Kara Novotny</title>
 <meta name="description" content="Case study: Chronicles of the Six Houses (CoSH) — an AI-driven narrative RPG with 122 NPCs, 43 state flags, and a custom LLM quest-generation pipeline built in React/TypeScript.">
 <link rel="stylesheet" href="/portfolio/css/style.css">
 </head>
@@ -18,7 +18,7 @@
       <a href="/portfolio/projects/cosh.html" class="active">CoSH</a>
       <a href="/portfolio/projects/redwood.html">Redwood</a>
       <a href="/portfolio/samples.html">Writing</a>
-      <a href="/portfolio/assets/kara-novotny-resume.pdf" download>Resume</a>
+      <a href="/portfolio/resume.html">Resume</a>
       <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">//</button>
     </nav>
   </div>
@@ -30,17 +30,18 @@
   <section class="hero">
     <div class="container">
       <h1>Chronicles of the<br>Six Houses <span class="accent">(CoSH)</span></h1>
-      <p class="hero-subtitle">An AI-driven narrative RPG engine — built from scratch in React/TypeScript.</p>
+      <p class="hero-subtitle">An AI-driven narrative RPG engine, built from scratch in React/TypeScript.</p>
       <p class="hero-intro">
         CoSH uses a custom LLM quest-generation pipeline to produce dynamic, branching narrative
         content across 122 characters, 6 houses, and 43 narrative state flags. The system enforces
         structured output validation, game-state-aware content routing, and programmatic hallucination
-        prevention — all within a solo-engineered React/TypeScript architecture.
+        prevention, all within a solo-engineered React/TypeScript architecture.
       </p>
       <div class="hero-links">
         <a href="#architecture">Architecture Overview</a>
         <a href="#prompt-engineering">Prompt Engineering</a>
         <a href="#validation">LLM Output Validation</a>
+        <a href="#engineering-thinking">Engineering Thinking</a>
         <a href="#scope">Project Scope</a>
       </div>
     </div>
@@ -59,7 +60,7 @@
         <li style="margin-bottom: 8px;"><strong>State drift:</strong> Multi-step quest chains lose continuity between steps when the LLM doesn't re-anchor canonical data</li>
         <li style="margin-bottom: 8px;"><strong>Scale collapse:</strong> Prompt context windows overflow when trying to maintain consistency across dozens of simultaneous NPC arcs</li>
       </ul>
-      <p style="margin-top: 16px;">Standard approaches — single-shot generation, loose prompting, post-hoc editing — don't
+      <p style="margin-top: 16px;">Standard approaches, single-shot generation, loose prompting, post-hoc editing, don't
          survive contact with a system this complex. This is an engineering problem, not a writing problem.</p>
     </div>
   </section>
@@ -73,15 +74,13 @@
 
       <div style="margin-top: 24px;">
         <div class="project-card" style="border-bottom: none; padding-bottom: 0; margin-bottom: 24px;">
-          <h3>Layer 1 — Data Models &amp; Game State</h3>
+          <h3>Layer 1, Data Models &amp; Game State</h3>
           <p>TypeScript interfaces define every entity: Characters, NPCs, Houses, Quests, Events,
-             Flags, Relationships. A centralized React state hook manages the full game state —
-             player choices, relationship values, unlocked NPCs, completed quests, active flags —
-             and propagates changes to all consumers reactively.</p>
+             Flags, Relationships. A centralized React state hook manages the full game state, player choices, relationship values, unlocked NPCs, completed quests, active flags, and propagates changes to all consumers reactively.</p>
         </div>
 
         <div class="project-card" style="border-bottom: none; padding-bottom: 0; margin-bottom: 24px;">
-          <h3>Layer 2 — Prompt Construction Engine</h3>
+          <h3>Layer 2, Prompt Construction Engine</h3>
           <p>A dedicated prompt builder assembling context from game state: NPC roster filtered by
              unlock conditions, active flags, relationship values, house lore, festival state, and
              player history. Output is a structured prompt with canonical data locks (character names,
@@ -90,15 +89,15 @@
         </div>
 
         <div class="project-card" style="border-bottom: none; padding-bottom: 0; margin-bottom: 24px;">
-          <h3>Layer 3 — LLM Generation (API Layer)</h3>
+          <h3>Layer 3, LLM Generation (API Layer)</h3>
           <p>Prompt delivered to the configured LLM provider. Response parsed as structured JSON
              containing both narrative content (the story prose) and mechanical outcomes (stat changes,
              flag updates, relationship deltas, quest progression). Two-step pipeline: Step 1 generates
-             narrative, Step 2 resolves outcomes — each with its own schema and validation.</p>
+             narrative, Step 2 resolves outcomes, each with its own schema and validation.</p>
         </div>
 
         <div class="project-card" style="border-bottom: none; padding-bottom: 0; margin-bottom: 24px;">
-          <h3>Layer 4 — Outcome Processing &amp; Validation</h3>
+          <h3>Layer 4, Outcome Processing &amp; Validation</h3>
           <p>Structured outcome passed through a strict-key allowlist validator. Only whitelisted
              field names survive. Unknown fields are silently stripped (no error, no crash, no
              invalid data reaching game state). Numeric fields checked against minimum floors.
@@ -107,7 +106,7 @@
         </div>
 
         <div class="project-card" style="border-bottom: none; padding-bottom: 0; margin-bottom: 0;">
-          <h3>Layer 5 — UI Rendering</h3>
+          <h3>Layer 5, UI Rendering</h3>
           <p>Validated outcomes rendered through React components: the narrative text displayed
              in-scroll, mechanical effects applied to game state, journal entries created, relationship
              panels updated. UI is mobile-first with responsive breakpoints, touch-friendly targets,
@@ -126,19 +125,19 @@
 
       <div style="margin-top: 20px; padding: 20px; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 6px; font-family: var(--font-mono); font-size: 13px; line-height: 1.8;">
         <div style="color: var(--accent);">1. CANONICAL DATA LOCK</div>
-        <div style="color: var(--text-muted); margin-bottom: 12px;">Character names, house names, locations, relationships — hard-coded into the prompt, never inferred by the LLM. Step 2+ prompts re-anchor this data from the registry, not from memory.</div>
+        <div style="color: var(--text-muted); margin-bottom: 12px;">Character names, house names, locations, relationships, hard-coded into the prompt, never inferred by the LLM. Step 2+ prompts re-anchor this data from the registry, not from memory.</div>
 
         <div style="color: var(--accent);">2. NAMED CAST FILTER</div>
         <div style="color: var(--text-muted); margin-bottom: 12px;">Only NPCs that pass isNPCActive() (unlock year, alive/dead status, house membership) can appear in scenes. Prevents generational NPCs from appearing before they're born.</div>
 
         <div style="color: var(--accent);">3. CONTINUITY RE-ANCHOR</div>
-        <div style="color: var(--text-muted); margin-bottom: 12px;">Multi-step quest chains include a canonical re-anchor block on Steps 2-3+ that restates the quest name, location, host house, and cast — preventing the LLM from inventing "House Veridian" three steps in.</div>
+        <div style="color: var(--text-muted); margin-bottom: 12px;">Multi-step quest chains include a canonical re-anchor block on Steps 2-3+ that restates the quest name, location, host house, and cast, preventing the LLM from inventing "House Veridian" three steps in.</div>
 
         <div style="color: var(--accent);">4. HOUSE CLARITY NOTES</div>
         <div style="color: var(--text-muted); margin-bottom: 12px;">Each house gets a custom prompt block: sibling age order, parent relationships, cultural norms, geographic facts. Prevents cross-house NPC hallucination (e.g., a Cindralith patriarch appearing in a Veythorne scene).</div>
 
         <div style="color: var(--accent);">5. STRUCTURED OUTPUT SCHEMA</div>
-        <div style="color: var(--text-muted);">Every prompt specifies the exact JSON schema the LLM must return. Field names, types, allowed values, and whether each field is required. The schema IS the contract — the LLM generates to it, and the validator enforces it.</div>
+        <div style="color: var(--text-muted);">Every prompt specifies the exact JSON schema the LLM must return. Field names, types, allowed values, and whether each field is required. The schema IS the contract, the LLM generates to it, and the validator enforces it.</div>
       </div>
     </div>
   </section>
@@ -159,6 +158,65 @@
 
       <p style="margin-top: 16px;">This validation layer is what makes CoSH reliable enough to generate hundreds of
          quest steps without manual review. The LLM writes. The validator decides what ships.</p>
+    </div>
+  </section>
+
+  <!-- ENGINEERING THINKING -->
+  <section class="section" id="engineering-thinking">
+    <div class="container">
+      <h2 class="section-header">Engineering Thinking</h2>
+      <p>Building CoSH has required as much debugging and systems thinking as it has prompt engineering.
+         Three examples from the commit history:</p>
+
+      <div style="margin-top: 24px;">
+        <div class="project-card" style="border-bottom: none; padding-bottom: 0; margin-bottom: 24px;">
+          <h3>Birthsign Trait Collision Fix</h3>
+          <p>All 23 birthsigns mapped to only 5 unique master traits, meaning most characters were
+             mechanically identical. The fix required rewriting the mapping so each birthsign produces
+             a distinct trait combination, then tracing how traits cascade through romance scoring,
+             NPC affinity, and quest-gating systems. A data entry problem that became a systems
+             problem.</p>
+        </div>
+
+        <div class="project-card" style="border-bottom: none; padding-bottom: 0; margin-bottom: 24px;">
+          <h3>House Relation Derivation</h3>
+          <p>Initial house relations were hard-coded, and drifted out of sync with narrative events.
+             Refactored the system to derive starting relations from the narrative HouseData itself.
+             When the lore says two houses have been allies for 200 years, the game state now reflects
+             that automatically. Single source of truth.</p>
+        </div>
+
+        <div class="project-card" style="border-bottom: none; padding-bottom: 0; margin-bottom: 0;">
+          <h3>Narrative-Runtime Divergence Tracking</h3>
+          <p>Added divergence tracking to the LLM context builder, a system that detects when the
+             LLM's narrative output contradicts established game state and feeds the discrepancy
+             back into the next prompt. This is what keeps the game world consistent across hundreds
+             of generated scenes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE WORLD, CODEX PREVIEW -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-header">The World</h2>
+      <p>CoSH is a text-based narrative RPG spanning decades of game-time, not months or years like
+         most life sims. Think BitLife meets Game of Thrones: a life simulator set in a carefully
+         curated fantasy realm where relationships matter, houses have centuries of history, and your
+         choices ripple across generations. Six houses. 122 individually written NPC profiles with
+         unique personalities, secrets, relationships, and life arcs, not procedurally generated.
+         The LLM generates the narrative prose, but the lore, character data, worldbuilding, and
+         game mechanics are all handcrafted.</p>
+
+      <p style="margin-top: 16px;">A taste, excerpted from the in-game Codex, House Marrowfell:</p>
+
+      <div style="margin-top: 16px; border-left: 4px solid var(--accent); background: var(--bg-alt); padding: 20px; border-radius: 0 6px 6px 0;">
+        <div style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 12px;">CoSH Codex, House Marrowfell</div>
+        <p style="margin-bottom: 12px;"><strong>House Marrowfell.</strong> Keepers of the Dead and Guardians of Knowledge. Marrowfell is the realm's seat of Medicine, the Humanities, History, Sociology, Genealogy, and the Visual Arts. Their universities in Mourn-Hold teach that knowledge is the only form of immortality. Where some houses guard their discoveries behind lock and cipher, Marrowfell believes truth belongs to the living, publishing their findings openly, building libraries and anatomy theaters where the line between scholar and student dissolves.</p>
+        <p style="margin-bottom: 12px;"><strong>The Pale Cure, Year 120.</strong> When the Pale Rot swept through Valebridge, it killed without distinction, noble and commoner alike withered to bone. Lady Valerica, a Roseveil herbalist of formidable patience, isolated a cure from the necro-blooms that grew only on graves in Marrowfell's mist-choked valleys. Her success earned the House its charter and proved forever what Marrowfell has always believed: that death, properly studied, saves lives.</p>
+        <p><strong>The Anatomy Riots, Year 350.</strong> Commoners stormed the bone-cathedrals, torches raised, convinced that Marrowfell's physicians were stealing bodies from fresh graves. The House responded not with force but with openness, free clinics, public lectures, and formal medical education that welcomed any student willing to learn. The riots subsided. The trust never fully returned, but the knowledge kept spreading.</p>
+      </div>
     </div>
   </section>
 
@@ -193,7 +251,7 @@
         </div>
       </div>
       <p style="margin-top: 24px; color: var(--text-muted); font-size: 14px;">
-        Built solo. React/TypeScript. Not in production — case study only.</p>
+        Built solo. React/TypeScript. Not in production, case study only.</p>
     </div>
   </section>
 
@@ -206,7 +264,7 @@
         <a href="mailto:karaashbeck@gmail.com">Email</a>
         <a href="https://www.linkedin.com/in/kashbeck">LinkedIn</a>
         <a href="https://github.com/maughtycat">GitHub</a>
-        <a href="/portfolio/assets/kara-novotny-resume.pdf" download>Resume PDF</a>
+        <a href="https://www.youtube.com/@SkylarkFinchie">YouTube</a>
       </div>
       <div class="footer-copy">&copy; 2026 Kara Novotny</div>
     </div>
