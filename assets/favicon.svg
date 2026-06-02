@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <rect width="32" height="32" rx="4" fill="#0f0f0f"/>
+  <text x="16" y="22" dominant-baseline="middle" text-anchor="middle"
+        font-family="Helvetica, Arial, sans-serif"
+        font-weight="800"
+        font-size="18"
+        fill="#7c9e87">KN</text>
+</svg>
