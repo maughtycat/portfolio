@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI-Powered Content Lifecycle Automation | Kara Novotny</title>
+<meta name="description" content="Case study: A proof-of-concept workflow for automating content audits, updates, and publishing using agentic AI.">
+<link rel="stylesheet" href="/portfolio/css/style.css">
+<link rel="icon" type="image/svg+xml" href="/portfolio/assets/favicon.svg">
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"56e05d61c293454f9ed991f4ff159297\"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/portfolio/index.html" class="site-name">Kara Novotny</a>
+    <nav class="nav-links">
+      <a href="/portfolio/about.html">About</a>
+      <a href="/portfolio/projects/cosh.html">CoSH</a>
+      <a href="/portfolio/projects/redwood.html">Redwood</a>
+      <a href="/portfolio/projects/ai-workflow.html" class="active">AI Workflow</a>
+      <a href="/portfolio/samples.html">Writing</a>
+      <a href="/portfolio/resume.html">Resume</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">//</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <h1>AI-Powered Content<br>Lifecycle Automation</h1>
+      <p class="hero-subtitle">A proof-of-concept workflow for automating content audits, updates, and publishing using agentic AI.</p>
+      <p class="hero-intro">
+        When features ship, someone has to manually check every piece of documentation to find
+        what's now outdated. This proof of concept shows how an AI agent can automate that entire
+        pipeline, from code change to published content update, triggered by the source code itself.
+      </p>
+      <div class="hero-links">
+        <a href="#bottleneck">The Bottleneck</a>
+        <a href="#pipeline">The Pipeline</a>
+        <a href="#agent">What the Agent Does</a>
+        <a href="#accessibility">Accessibility</a>
+        <a href="#tradeoffs">Trade-offs</a>
+        <a href="#rollout">Rollout Plan</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE BOTTLENECK -->
+  <section class="section" id="bottleneck">
+    <div class="container">
+      <h2 class="section-header">The Bottleneck</h2>
+      <p>The bottleneck is the content audit. Every time a feature ships, someone on the education
+         team has to manually check 250+ articles, videos, and courses to figure out which ones are
+         now outdated. That's the step where everything slows down.</p>
+
+      <p style="margin-top: 16px;">Why this step specifically:</p>
+      <ul style="margin-top: 16px; padding-left: 20px;">
+        <li style="margin-bottom: 8px;"><strong>Stakeholder review</strong> is people-dependent and can't be automated without losing judgment.</li>
+        <li style="margin-bottom: 8px;"><strong>Scheduling/publishing</strong> is already close to automatic for most content systems.</li>
+        <li style="margin-bottom: 8px;"><strong>The audit is where hours disappear.</strong> A human reads a changelog, opens each article, decides "affected / not affected," and repeats 250 times.</li>
+      </ul>
+
+      <p style="margin-top: 20px;"><strong>How to measure success:</strong></p>
+      <ul style="margin-top: 8px; padding-left: 20px;">
+        <li style="margin-bottom: 6px;">Reduction in support escalations after feature launches (stale docs create tickets)</li>
+        <li style="margin-bottom: 6px;">Time from feature ship to content update going live</li>
+        <li style="margin-bottom: 6px;">Internal feedback on whether new feature articles actually answer questions</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- THE PIPELINE -->
+  <section class="section" id="pipeline">
+    <div class="container">
+      <h2 class="section-header">The Pipeline</h2>
+
+      <div style="margin-top: 24px; padding: 20px; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 6px; font-family: var(--font-mono); font-size: 13px; line-height: 1.8; white-space: pre-wrap;">
+Code update → AI Agent analyzes changes → Agent compares against content library → Which articles affected?
+  → Affected: Agent drafts updated content → Drafts sent to stakeholders → Product review → Security review → Legal review → Publish
+  → New feature: Agent drafts new article → same review chain
+  → No change: Skip</div>
+
+      <div style="margin-top: 32px;">
+        <h3 style="font-family: var(--font-heading); font-size: 18px; font-weight: 600; margin-bottom: 16px;">Tools at Each Step</h3>
+        <table style="width: 100%; border-collapse: collapse; font-size: 15px;">
+          <thead>
+            <tr style="border-bottom: 2px solid var(--border); text-align: left;">
+              <th style="padding: 12px 16px; font-weight: 600;">Step</th>
+              <th style="padding: 12px 16px; font-weight: 600;">Tool</th>
+              <th style="padding: 12px 16px; font-weight: 600;">Why</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 12px 16px;">Trigger</td>
+              <td style="padding: 12px 16px;">Source code repository</td>
+              <td style="padding: 12px 16px;">Where features live before anyone sees them</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 12px 16px;">Analysis</td>
+              <td style="padding: 12px 16px;">AI agent (Claude, Cursor)</td>
+              <td style="padding: 12px 16px;">Understands what the feature does, not just what files changed</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 12px 16px;">Content scan</td>
+              <td style="padding: 12px 16px;">Agent checks help site against analysis</td>
+              <td style="padding: 12px 16px;">Finds affected articles, identifies gaps</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 12px 16px;">Drafting</td>
+              <td style="padding: 12px 16px;">Agent writes first-draft updates</td>
+              <td style="padding: 12px 16px;">Highlights changes for reviewers</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 12px 16px;">Screenshots</td>
+              <td style="padding: 12px 16px;">Playwright (automated browser)</td>
+              <td style="padding: 12px 16px;">Reliable, repeatable, no manual screenshotting</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px 16px;">Review</td>
+              <td style="padding: 12px 16px;">Product → Security → Legal (sequential)</td>
+              <td style="padding: 12px 16px;">Each team reviews what matters to them</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT THE AGENT DOES -->
+  <section class="section" id="agent">
+    <div class="container">
+      <h2 class="section-header">What the Agent Does</h2>
+      <p>Think of it as a research assistant that never sleeps:</p>
+      <ol style="margin-top: 16px; padding-left: 20px; line-height: 1.8;">
+        <li style="margin-bottom: 10px;">Reads the code change and understands what the new feature does</li>
+        <li style="margin-bottom: 10px;">Scans the content library and finds every article that touches the affected feature</li>
+        <li style="margin-bottom: 10px;">Drafts updates, rewriting sections that are now outdated</li>
+        <li style="margin-bottom: 10px;">Flags opportunities: cross-links, new content for power users, gaps where customers might get stuck</li>
+        <li style="margin-bottom: 10px;">Compiles a report with recommended actions, ranked by priority</li>
+      </ol>
+
+      <p style="margin-top: 20px;"><strong>On interactive UI blocks:</strong> Rather than relying on static screenshots
+         (which go out of date), recommend lightweight simulations that mirror how the product works,
+         built from source code. Regenerated automatically when code changes.</p>
+    </div>
+  </section>
+
+  <!-- ACCESSIBILITY -->
+  <section class="section" id="accessibility">
+    <div class="container">
+      <h2 class="section-header">Accessibility</h2>
+      <p>The same automation pipeline handles accessibility. Every piece of content that goes through
+         the agent gets screened: screenshots get alt text, content is validated for screen-reader
+         compatibility, and the agent flags anything that doesn't meet WCAG standards. This isn't a
+         separate step. It's baked into the workflow.</p>
+    </div>
+  </section>
+
+  <!-- TRADE-OFFS -->
+  <section class="section" id="tradeoffs">
+    <div class="container">
+      <h2 class="section-header">Trade-offs</h2>
+
+      <div style="margin-top: 24px;">
+        <div class="project-card" style="border-bottom: none; padding-bottom: 0; margin-bottom: 24px;">
+          <h3>Accuracy vs. Speed</h3>
+          <p>An automated audit is only useful if it's right. False positives waste stakeholder time.
+             False negatives leave stale content live.</p>
+          <p style="margin-top: 12px;"><strong>Solution:</strong> Run the agent alongside the manual audit for the first few
+             cycles. Compare results. Measure where the agent over-flagged or under-flagged, then tune.</p>
+        </div>
+
+        <div class="project-card" style="border-bottom: none; padding-bottom: 0; margin-bottom: 0;">
+          <h3>Source Material Quality</h3>
+          <p>This system depends entirely on accurate, detailed source material. If the code or specs
+             are vague, the agent can only guess. The solution: deep integration with the internal
+             knowledge base.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROLLOUT -->
+  <section class="section" id="rollout">
+    <div class="container">
+      <h2 class="section-header">Rollout Plan</h2>
+
+      <div style="margin-top: 24px;">
+        <div class="project-card" style="border-bottom: none; padding-bottom: 0; margin-bottom: 24px;">
+          <h3>Phase 1 (Week 1–2)</h3>
+          <p>Clone source code repo, connect to agent, scan articles only.</p>
+        </div>
+        <div class="project-card" style="border-bottom: none; padding-bottom: 0; margin-bottom: 24px;">
+          <h3>Phase 2 (Week 3–4)</h3>
+          <p>Run parallel with manual audit, compare outputs.</p>
+        </div>
+        <div class="project-card" style="border-bottom: none; padding-bottom: 0; margin-bottom: 24px;">
+          <h3>Phase 3 (Month 2)</h3>
+          <p>Expand to videos and courses, add staging environment.</p>
+        </div>
+        <div class="project-card" style="border-bottom: none; padding-bottom: 0; margin-bottom: 24px;">
+          <h3>Phase 4 (Ongoing)</h3>
+          <p>Add metrics: recently searched questions, most-viewed articles, common support topics.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 32px;">
+        <h3 style="font-family: var(--font-heading); font-size: 18px; font-weight: 600; margin-bottom: 16px;">What I'd Learn From the First Version</h3>
+        <ul style="padding-left: 20px;">
+          <li style="margin-bottom: 8px;">How often does the agent flag an article that doesn't need updating?</li>
+          <li style="margin-bottom: 8px;">How often does it miss one that does?</li>
+          <li style="margin-bottom: 8px;">Does the drafted content actually reflect what the feature does?</li>
+          <li style="margin-bottom: 8px;">How do Product and Security feel about reviewing AI-generated drafts?</li>
+        </ul>
+      </div>
+
+      <p style="margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 14px; font-style: italic;">
+        This proof of concept was developed as a take-home assignment and has been de-identified.
+        The workflow pattern has been validated in production at Redwood Software, where FlareGuard
+        automated content quality scoring and escalation flagging across a documentation department,
+        eliminating customer escalations to zero.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="mailto:karaashbeck@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/kashbeck">LinkedIn</a>
+        <a href="https://github.com/maughtycat">GitHub</a>
+        <a href="https://www.youtube.com/@SkylarkFinchie">YouTube</a>
+      </div>
+      <div class="footer-copy">&copy; 2026 Kara Novotny</div>
+    </div>
+  </div>
+</footer>
+
+<script src="/portfolio/js/script.js"></script>
+
+</body>
+</html>
