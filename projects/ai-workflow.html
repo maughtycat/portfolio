@@ -78,11 +78,123 @@
     <div class="container">
       <h2 class="section-header">The Pipeline</h2>
 
-      <div style="margin-top: 24px; padding: 20px; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 6px; font-family: var(--font-mono); font-size: 13px; line-height: 1.8; white-space: pre-wrap;">
-Code update → AI Agent analyzes changes → Agent compares against content library → Which articles affected?
-  → Affected: Agent drafts updated content → Drafts sent to stakeholders → Product review → Security review → Legal review → Publish
-  → New feature: Agent drafts new article → same review chain
-  → No change: Skip</div>
+      <!-- Flowchart 1: End-to-End Pipeline -->
+      <h3 style="font-family: var(--font-heading); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 20px;">End-to-End Flow</h3>
+      <div style="display: flex; align-items: stretch; gap: 0; margin: 0 0 40px; overflow-x: auto; padding-bottom: 8px;">
+        <!-- Step 1 -->
+        <div style="flex: 0 0 auto; text-align: center;">
+          <div style="background: var(--bg-alt); border: 1px solid var(--border); border-radius: 8px; padding: 16px 14px; min-width: 110px;">
+            <div style="font-family: var(--font-heading); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-bottom: 6px;">Trigger</div>
+            <div style="font-size: 14px; font-weight: 600;">Code<br>Update</div>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">git push</div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; color: var(--accent); font-size: 20px; padding: 0 4px; flex: 0 0 auto;">&#8594;</div>
+        <!-- Step 2 -->
+        <div style="flex: 0 0 auto; text-align: center;">
+          <div style="background: var(--bg-alt); border: 1px solid var(--border); border-radius: 8px; padding: 16px 14px; min-width: 110px;">
+            <div style="font-family: var(--font-heading); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-bottom: 6px;">Analysis</div>
+            <div style="font-size: 14px; font-weight: 600;">Agent Reads<br>Changes</div>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Claude / Cursor</div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; color: var(--accent); font-size: 20px; padding: 0 4px; flex: 0 0 auto;">&#8594;</div>
+        <!-- Step 3 -->
+        <div style="flex: 0 0 auto; text-align: center;">
+          <div style="background: var(--bg-alt); border: 1px solid var(--border); border-radius: 8px; padding: 16px 14px; min-width: 110px;">
+            <div style="font-family: var(--font-heading); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-bottom: 6px;">Scan</div>
+            <div style="font-size: 14px; font-weight: 600;">Compare<br>Content</div>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">250+ articles</div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; color: var(--accent); font-size: 20px; padding: 0 4px; flex: 0 0 auto;">&#8594;</div>
+        <!-- Step 4: Decision -->
+        <div style="flex: 0 0 auto; text-align: center;">
+          <div style="background: rgba(124, 158, 135, 0.15); border: 2px solid var(--accent); border-radius: 8px; padding: 16px 14px; min-width: 110px; transform: rotate(0deg);">
+            <div style="font-family: var(--font-heading); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-bottom: 6px;">Decide</div>
+            <div style="font-size: 14px; font-weight: 600;">Which<br>Articles?</div>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">3 paths</div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; color: var(--accent); font-size: 20px; padding: 0 4px; flex: 0 0 auto;">&#8594;</div>
+        <!-- Step 5 -->
+        <div style="flex: 0 0 auto; text-align: center;">
+          <div style="background: var(--bg-alt); border: 1px solid var(--border); border-radius: 8px; padding: 16px 14px; min-width: 110px;">
+            <div style="font-family: var(--font-heading); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-bottom: 6px;">Draft</div>
+            <div style="font-size: 14px; font-weight: 600;">Agent Writes<br>Updates</div>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">+ screenshots</div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; color: var(--accent); font-size: 20px; padding: 0 4px; flex: 0 0 auto;">&#8594;</div>
+        <!-- Step 6 -->
+        <div style="flex: 0 0 auto; text-align: center;">
+          <div style="background: var(--bg-alt); border: 1px solid var(--border); border-radius: 8px; padding: 16px 14px; min-width: 130px;">
+            <div style="font-family: var(--font-heading); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-bottom: 6px;">Review</div>
+            <div style="font-size: 14px; font-weight: 600;">Product &rarr;<br>Security &rarr;<br>Legal</div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; color: var(--accent); font-size: 20px; padding: 0 4px; flex: 0 0 auto;">&#8594;</div>
+        <!-- Step 7 -->
+        <div style="flex: 0 0 auto; text-align: center;">
+          <div style="background: rgba(124, 158, 135, 0.2); border: 2px solid var(--accent); border-radius: 8px; padding: 16px 14px; min-width: 100px;">
+            <div style="font-family: var(--font-heading); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-bottom: 6px;">Ship</div>
+            <div style="font-size: 14px; font-weight: 600;">Publish</div>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Live</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flowchart 2: Agent Decision Tree -->
+      <h3 style="font-family: var(--font-heading); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 20px;">Agent Decision Tree</h3>
+      <div style="background: var(--bg-alt); border: 1px solid var(--border); border-radius: 8px; padding: 28px 24px; margin-bottom: 40px;">
+        <!-- Top: Agent -->
+        <div style="text-align: center; margin-bottom: 24px;">
+          <div style="display: inline-block; background: rgba(124, 158, 135, 0.15); border: 2px solid var(--accent); border-radius: 8px; padding: 12px 24px;">
+            <div style="font-family: var(--font-heading); font-size: 13px; font-weight: 700;">AI Agent</div>
+            <div style="font-size: 12px; color: var(--text-muted);">Analyzes code change + scans content library</div>
+          </div>
+        </div>
+        <!-- Connector lines down -->
+        <div style="display: flex; justify-content: center; margin-bottom: 0;">
+          <div style="width: 2px; height: 20px; background: var(--border);"></div>
+        </div>
+        <!-- Three branches -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 0;">
+          <!-- Branch 1: Affected -->
+          <div style="text-align: center;">
+            <div style="width: 2px; height: 16px; background: var(--border); margin: 0 auto 12px;"></div>
+            <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 16px 12px;">
+              <div style="font-family: var(--font-heading); font-size: 12px; font-weight: 700; color: var(--accent); margin-bottom: 8px;">Affected</div>
+              <div style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">Agent drafts updated content for existing article</div>
+              <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border);">
+                <div style="font-size: 12px; color: var(--text-muted);">Draft &rarr; Review &rarr; Publish</div>
+              </div>
+            </div>
+          </div>
+          <!-- Branch 2: New Feature -->
+          <div style="text-align: center;">
+            <div style="width: 2px; height: 16px; background: var(--border); margin: 0 auto 12px;"></div>
+            <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 16px 12px;">
+              <div style="font-family: var(--font-heading); font-size: 12px; font-weight: 700; color: var(--accent); margin-bottom: 8px;">New Feature</div>
+              <div style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">Agent drafts brand new article from scratch</div>
+              <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border);">
+                <div style="font-size: 12px; color: var(--text-muted);">Draft &rarr; Review &rarr; Publish</div>
+              </div>
+            </div>
+          </div>
+          <!-- Branch 3: No Change -->
+          <div style="text-align: center;">
+            <div style="width: 2px; height: 16px; background: var(--border); margin: 0 auto 12px;"></div>
+            <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 16px 12px;">
+              <div style="font-family: var(--font-heading); font-size: 12px; font-weight: 700; color: var(--text-muted); margin-bottom: 8px;">No Change</div>
+              <div style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">Article is current, no action needed</div>
+              <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border);">
+                <div style="font-size: 12px; color: var(--text-muted);">Skip</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div style="margin-top: 32px;">
         <h3 style="font-family: var(--font-heading); font-size: 18px; font-weight: 600; margin-bottom: 16px;">Tools at Each Step</h3>
