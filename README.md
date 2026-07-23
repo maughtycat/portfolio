@@ -25,6 +25,10 @@ The complete case study of how I rebuilt a broken enterprise documentation porta
 
 An AI-driven narrative RPG engine I've been building solo in React/TypeScript. Features a custom LLM quest-generation pipeline with structured JSON output schemas, NPC state management for 122 characters, and programmatic hallucination prevention across 43 narrative state flags. Still in active development -- the case study explains the architecture.
 
+### [AI-Powered Content Lifecycle Automation](https://maughtycat.github.io/portfolio/projects/ai-workflow.html)
+
+A proof-of-concept workflow showing how AI agents can automate the entire content lifecycle, from code change to published content update. Covers opportunity assessment, pipeline design, tool selection, accessibility automation, trade-off analysis, and a phased rollout plan. The workflow pattern has been validated in production at Redwood Software, where FlareGuard automated content quality scoring and eliminated customer escalations to zero.
+
 ### [Writing Samples](https://maughtycat.github.io/portfolio/samples.html)
 
 Selected work across technical documentation and content engineering -- including context for who each piece was for, what problem it solved, and how I validated accuracy.
