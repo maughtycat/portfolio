@@ -329,6 +329,41 @@ body {
   text-decoration: none;
 }
 
+/* ── FAQ ──────────────────────────────────────────────── */
+
+.faq-intro {
+  margin-bottom: 36px;
+}
+
+.faq-intro p {
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.faq-item {
+  margin-bottom: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.faq-question {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.faq-answer {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
 /* ── FOOTER ─────────────────────────────────────────────── */
 
 .site-footer {
