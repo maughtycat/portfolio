@@ -44,6 +44,7 @@
       <div class="hero-links">
         <a href="#situation">The Situation</a>
         <a href="#what-changed">What Changed</a>
+        <a href="#use-cases">Use Cases</a>
         <a href="#engineering">Engineering Decisions</a>
         <a href="#impact">Impact</a>
         <a href="#dashboard">Dashboard</a>
@@ -137,6 +138,32 @@
          I handle the judgment and submission. This is the difference between "I automated
          my job search" and "I built a workflow that automates the parts that don't need
          a human while keeping me in the loop for the parts that do."</p>
+    </div>
+  </section>
+
+  <section class="section" id="use-cases">
+    <div class="container">
+      <h2 class="section-header">Use Cases</h2>
+
+      <h3 style="font-family: var(--font-heading); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 16px;">Job Search at Scale</h3>
+      <p>The primary use case: evaluating job postings, scoring relevance, and generating
+         tailored materials. The pipeline processes a job posting in under 30 seconds.
+         The tracker logs every application with status, fit score, and notes. Stats
+         command shows applications per week, response rates, and average fit scores.
+         Used daily for 2.5 months across 279 applications.</p>
+
+      <h3 style="font-family: var(--font-heading); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 28px 0 16px;">Unemployment Compliance (RESEA)</h3>
+      <p>State unemployment agencies require documented proof of job search activity.
+         RESEA audits demand company name, position, date applied, and method for
+         every application. The tracker stores this data automatically and exports it
+         as a RESEA-compliant CSV. I used this in June 2026 to satisfy an audit
+         without scrambling to reconstruct my search history from memory.</p>
+
+      <h3 style="font-family: var(--font-heading); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 28px 0 16px;">Salary Negotiation Context</h3>
+      <p>The tracker stores salary ranges for every posting. When negotiating an offer,
+         I can quickly pull the salary data for similar roles I applied to: "Based on
+         199 postings with salary data, the average range for this role type is
+         $118K-$165K." Data-backed negotiation beats gut feeling.</p>
     </div>
   </section>
 
