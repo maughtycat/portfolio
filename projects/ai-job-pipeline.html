@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Job Application Pipeline, Case Study | Kara Novotny</title>
+<meta name="description" content="Case study: How I built an AI-powered job application pipeline that parsed 279 postings, scored relevance, and generated tailored materials during my own job search.">
+<link rel="stylesheet" href="/portfolio/css/style.css">
+<link rel="icon" type="image/svg+xml" href="/portfolio/assets/favicon.svg">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/portfolio/index.html" class="site-name">Kara Novotny</a>
+    <nav class="nav-links">
+      <a href="/portfolio/about.html">About</a>
+      <a href="/portfolio/projects/cosh.html">CoSH</a>
+      <a href="/portfolio/projects/redwood.html">Redwood</a>
+      <a href="/portfolio/projects/ai-job-pipeline.html" class="active">Pipeline</a>
+      <a href="/portfolio/projects/ai-workflow.html">Workflow</a>
+      <a href="/portfolio/samples.html">Writing</a>
+      <a href="/portfolio/resume.html">Resume</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">//</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="container">
+      <h1>AI Job Application<br><span class="accent">Pipeline</span></h1>
+      <p class="hero-subtitle">From manual, repetitive job applications to an automated pipeline that scores, tailors, and tracks, built and used during my own job search.</p>
+      <p class="hero-intro">
+        I was laid off in June 2026 and immediately started applying to jobs. I was applying
+        manually, one at a time, tailoring each resume and cover letter by hand. It took hours
+        per application. I was burning out and the market was brutal, 150+ applicants per posting
+        for remote tech roles. So I built a tool to automate the parts that don't need a human.
+        Over 2.5 months, the pipeline processed 279 tailored applications, 25 per week, and
+        helped me land 8 hiring manager interviews. This is the story of building it, using it,
+        and what it taught me about AI workflow engineering.
+      </p>
+      <div class="hero-links">
+        <a href="#situation">The Situation</a>
+        <a href="#what-changed">What Changed</a>
+        <a href="#engineering">Engineering Decisions</a>
+        <a href="#impact">Impact</a>
+        <a href="https://github.com/maughtycat/ai-job-pipeline" target="_blank">GitHub Repo</a>
+        <a href="https://ai-job-pipeline.streamlit.app" target="_blank">Live Demo</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="border-top: none; padding-top: 40px;">
+    <div class="container">
+      <div class="case-study-stats">
+        <div class="stat-card">
+          <div class="stat-number">279</div>
+          <div class="stat-label">Tailored Applications</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">25/week</div>
+          <div class="stat-label">Applications Per Week</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">8</div>
+          <div class="stat-label">HM Interviews</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="situation">
+    <div class="container">
+      <h2 class="section-header">The Situation</h2>
+      <p>June 2026. Laid off, mortgage, unemployment benefits with a hard deadline. The market
+         was brutal for remote-only tech jobs, 150+ applicants per posting. I was applying
+         manually: read the posting, decide if it's a fit, figure out which resume bullets
+         apply, draft a cover letter, track the application. Every single one took hours.
+         I was burning out before I'd even gotten to the interview stage.</p>
+
+      <p style="margin-top: 16px;">The pattern was obvious. The research and drafting steps
+         were the same every time: parse the posting, evaluate fit, generate materials. The
+         judgment calls (should I apply? does this actually match my skills?) were the human
+         part. The rest was mechanical. So I built a tool to automate the mechanical parts.</p>
+
+      <p style="margin-top: 16px;">The pipeline has three stages: parse a job posting into
+         structured data, score how well it matches my profile, and generate tailored resume
+         bullets and cover letters. A tracker logs every application with status and fit score.
+         The tool handles the research and drafting. I handle the judgment and submission. That's
+         not a limitation, it's the point.</p>
+    </div>
+  </section>
+
+  <section class="section" id="what-changed">
+    <div class="container">
+      <h2 class="section-header">What Changed</h2>
+
+      <h3 style="font-family: var(--font-heading); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 16px;">Job Parsing</h3>
+      <p>The pipeline extracts structured data from job postings using an LLM. Feed it a URL
+         or paste the text, and it pulls out company, role, location, salary range, required
+         skills, preferred skills, years of experience, and responsibilities. Every job posting
+         is formatted differently. Some are clean HTML, some are PDFs, some are walls of text
+         in an ATS. The LLM handles the chaos. Output is validated JSON, not free-form text.</p>
+
+      <h3 style="font-family: var(--font-heading); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 28px 0 16px;">Relevance Scoring</h3>
+      <p>Not keyword matching. The scorer evaluates fit holistically against my profile:
+         skills, experience, preferences, and dealbreakers. It returns a score (0-100), a
+         breakdown by category, a reasoning string, and red flags. A score of 70+ means
+         worth applying. Below 50 means skip. The red flags surface dealbreakers before
+         I waste time: "requires 8+ years SWE experience," "requires CS degree," "onsite
+         only." I applied to 279 jobs. The scorer saved me from applying to hundreds more
+         that weren't worth the effort.</p>
+
+      <h3 style="font-family: var(--font-heading); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 28px 0 16px;">Material Generation</h3>
+      <p>Each application gets tailored resume bullets, a cover letter draft, and answers
+         to every application-specific question the posting asks. "Why this company?",
+         "Tell us about yourself", "Describe a time you failed", "What's your greatest
+         strength?" — the generator reads the posting, identifies every question field,
+         and produces answers that reference my actual experience. The cover letter learns
+         my voice from a reference text. The resume bullets match the posting's language.
+         I review and edit every output before submitting. The tool drafts. I judge.</p>
+
+      <h3 style="font-family: var(--font-heading); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 28px 0 16px;">Application Tracking</h3>
+      <p>SQLite-backed tracker logs every application: company, role, date applied, status,
+         fit score, salary range, notes. Stats command shows applications per week, response
+         rates, and average fit scores. The tracker also exports RESEA-compliant CSV for
+         unemployment audits. I used this in June 2026 to satisfy a RESEA audit without
+         scrambling to reconstruct my search history.</p>
+
+      <h3 style="font-family: var(--font-heading); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 28px 0 16px;">Human-in-the-Loop Design</h3>
+      <p>The pipeline is not fully automated. I send the job links, verify the generated
+         materials, and manually apply through each portal. Application forms have anti-bot
+         measures ("write the word octopi"), inconsistent fields, and subtle requirements
+         that an automated agent would miss. The tool handles the research and drafting.
+         I handle the judgment and submission. This is the difference between "I automated
+         my job search" and "I built a workflow that automates the parts that don't need
+         a human while keeping me in the loop for the parts that do."</p>
+    </div>
+  </section>
+
+  <section class="section" id="engineering">
+    <div class="container">
+      <h2 class="section-header">Engineering Decisions</h2>
+
+      <h3 style="font-family: var(--font-heading); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 16px;">Why These Technologies</h3>
+      <p><strong>Python</strong> &mdash; strongest skill, AI-augmented workflow runs in Python,
+         most LLM SDKs are Python-first. Not choosing Java or Go because they're "real
+         engineering" languages. Choosing the tool that gets the job done fastest.</p>
+
+      <p style="margin-top: 12px;"><strong>OpenRouter</strong> &mdash; user brings their own
+         API key. No surprise billing for the repo owner. Supports dozens of models. If
+         someone wants to use GPT-4, Claude, or Llama, they just change the model name.</p>
+
+      <p style="margin-top: 12px;"><strong>SQLite</strong> &mdash; zero config, portable,
+         sufficient for a single-user pipeline. No Postgres server to run, no Docker compose
+         file to maintain. The database is one file you can email someone.</p>
+
+      <p style="margin-top: 12px;"><strong>Pydantic</strong> &mdash; validates LLM structured
+         output against schemas. If the LLM returns garbage, Pydantic catches it before it
+         reaches the rest of the pipeline. This is the difference between "trust the LLM"
+         and "verify the LLM."</p>
+
+      <p style="margin-top: 12px;"><strong>Streamlit</strong> &mdash; fastest path from
+         "works in CLI" to "looks good in browser." Not the most scalable framework, but
+         this isn't a SaaS product. It's a portfolio demo.</p>
+
+      <p style="margin-top: 12px;"><strong>argparse</strong> &mdash; stdlib. No click, no
+         typer, no dependency needed for a CLI that does four things.</p>
+
+      <h3 style="font-family: var(--font-heading); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 28px 0 16px;">Why These Design Choices</h3>
+      <p><strong>CLI first, dashboard second.</strong> Core product before polish. The CLI
+         proves the pipeline works. The dashboard makes it look good for the portfolio.</p>
+
+      <p style="margin-top: 12px;"><strong>Human-in-the-loop.</strong> The tool handles
+         research and drafting. The human handles judgment and submission. Application forms
+         have anti-bot measures and inconsistent fields that break automation.</p>
+
+      <h3 style="font-family: var(--font-heading); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 28px 0 16px;">Code Review</h3>
+      <p>After the initial build, I ran an automated audit (ponytail-audit) that scans for
+         over-engineering, dead code, and unnecessary abstractions. It flagged 4 findings
+         across the codebase. I applied 3: removed an unused import, deleted a dead function
+         that loaded a YAML file nobody read, and simplified a nested retry structure that
+         was doing the same thing twice. I skipped 1: client caching, because creating a
+         new OpenAI client 3 times per CLI run is irrelevant overhead. The audit took 5
+         minutes. The fixes took 2. The point isn't that the code was bloated &mdash; it's
+         that a 10-line review caught things I built in a hurry, and I knew which ones to
+         fix and which ones didn't matter. That judgment is the skill.</p>
+    </div>
+  </section>
+
+  <section class="section" id="impact">
+    <div class="container">
+      <h2 class="section-header">Impact</h2>
+      <p>The real numbers from 2.5 months of actual usage.</p>
+
+      <div style="margin-top: 24px;">
+        <div class="project-card" style="border-bottom: none; padding-bottom: 0; margin-bottom: 24px;">
+          <h3>Pipeline Stats</h3>
+          <p><strong>279</strong> tailored applications, June 1 &ndash; August 15, 2026</p>
+          <p><strong>25</strong> applications per week (5 per weekday)</p>
+          <p><strong>10</strong> completed recruiter screens</p>
+          <p><strong>8</strong> advanced to hiring manager interviews (80% conversion)</p>
+          <p><strong>1</strong> take-home + deep dive (Harvey)</p>
+          <p><strong>1</strong> currently interviewing (Archive)</p>
+        </div>
+
+        <div class="project-card" style="border-bottom: none; padding-bottom: 0; margin-bottom: 24px;">
+          <h3>The Numbers That Matter</h3>
+          <p>8 out of 10 recruiters who picked up the phone passed me to the hiring manager.
+             The one exception was Customer.io, where the HM had a hard requirement to code
+             without AI tools, a filter not mentioned in the job description.</p>
+          <p style="margin-top: 12px;">The pipeline didn't just increase volume. It increased
+             the quality of each application. Every posting got a tailored resume, a tailored
+             cover letter, and a relevance score before I decided whether to apply.</p>
+        </div>
+
+        <div class="project-card" style="border-bottom: none; padding-bottom: 0; margin-bottom: 24px;">
+          <h3>What It Didn't Fix</h3>
+          <p>83 template/generic rejections. Companies that never looked at the materials.
+             Roles that were stretches. Market conditions that made remote-only positions
+             brutally competitive. The tool didn't magic away a tough market. It let me
+             play the volume game without sacrificing quality.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-header">Full Scope</h2>
+      <p>I built an AI-powered job application pipeline in Python: job posting parser (LLM-powered
+         structured extraction), relevance scorer (holistic fit evaluation with reasoning and red
+         flags), material generator (tailored resume bullets, cover letters, and answers to
+         every application-specific question), and SQLite-backed application tracker with RESEA audit export. The
+         pipeline uses OpenRouter for LLM access (user brings their own key), Pydantic for output
+         validation, and Streamlit for a visual dashboard. Human-in-the-loop design: the tool
+         handles research and drafting, the human handles judgment and submission. 279 tailored
+         applications over 2.5 months, 25 per week, 8 hiring manager interviews, 80%
+         recruiter-to-HM conversion. Code reviewed with automated audit, 3 of 4 findings applied.
+         ~824 lines across 8 files. Tools: Python, OpenRouter, SQLite, Pydantic, Streamlit, Git.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="mailto:karaashbeck@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/kashbeck">LinkedIn</a>
+        <a href="https://github.com/maughtycat">GitHub</a>
+        <a href="https://www.youtube.com/@SkylarkFinchie">YouTube</a>
+      </div>
+      <div class="footer-copy">&copy; 2026 Kara Novotny</div>
+    </div>
+  </div>
+</footer>
+
+<script src="/portfolio/js/script.js"></script>
+
+</body>
+</html>
