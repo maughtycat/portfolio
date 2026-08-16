@@ -10,6 +10,17 @@ This portfolio showcases my work building documentation systems and AI-driven co
 
 ## What You'll Find Here
 
+### [AI Job Application Pipeline](https://maughtycat.github.io/portfolio/projects/ai-job-pipeline.html)
+
+An AI-powered job application pipeline I built and used during my own job search. Parses job postings, scores relevance against a profile, generates tailored resume bullets, cover letters, and application answers, and tracks every application through the pipeline. Processed 279 tailored applications in 2.5 months, landing 8 hiring manager interviews with 80% recruiter-to-HM conversion.
+
+**Highlights:**
+- Multi-stage LLM pipeline: parse, score, generate — with structured JSON output validation
+- SQLite tracker with RESEA audit export for unemployment compliance
+- Streamlit dashboard with sample results from real applications ([live demo](https://ai-job-pipeline-kn.streamlit.app/))
+- Human-in-the-loop design: tool handles research and drafting, human handles judgment and submission
+- Open source: [GitHub repo](https://github.com/maughtycat/ai-job-pipeline) with full code, README, and architecture documentation
+
 ### [Redwood Finance Automation -- Help Site Redesign](https://maughtycat.github.io/portfolio/projects/redwood.html)
 
 The complete case study of how I rebuilt a broken enterprise documentation portal from the ground up. Inherited a flat HTML site with fragile scripts, zero accessibility, and weekly customer success escalations. Shipped a fully ADA-compliant, searchable, role-aware help portal in six months -- all while learning agentic AI from scratch.
@@ -23,7 +34,7 @@ The complete case study of how I rebuilt a broken enterprise documentation porta
 
 ### [Chronicles of the Six Houses (CoSH)](https://maughtycat.github.io/portfolio/projects/cosh.html)
 
-An AI-driven narrative RPG engine I've been building solo in React/TypeScript. Features a custom LLM quest-generation pipeline with structured JSON output schemas, NPC state management for 122 characters, and programmatic hallucination prevention across 43 narrative state flags. Still in active development -- the case study explains the architecture.
+An AI-driven narrative RPG engine built solo in React/TypeScript. Custom LLM quest-generation pipeline with structured JSON output schemas, 122 NPCs, and 43 narrative state flags. [Case study](https://maughtycat.github.io/portfolio/projects/cosh.html) covers the architecture.
 
 ### [AI-Powered Content Lifecycle Automation](https://maughtycat.github.io/portfolio/projects/ai-workflow.html)
 
