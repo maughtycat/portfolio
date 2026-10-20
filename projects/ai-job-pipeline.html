@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Job Application Pipeline, Case Study | Kara Novotny</title>
-<meta name="description" content="Case study: How I built an AI-powered job application pipeline that parsed 279 postings, scored relevance, and generated tailored materials during my own job search.">
+<meta name="description" content="Case study: How I built an AI-powered job application pipeline that processed 414 applications, scored relevance, and generated tailored materials during my own job search.">
 <link rel="stylesheet" href="/portfolio/css/style.css">
 <link rel="icon" type="image/svg+xml" href="/portfolio/assets/favicon.svg">
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"56e05d61c293454f9ed991f4ff159297\"}'></script><!-- End Cloudflare Web Analytics -->
@@ -40,8 +40,8 @@
         manually, one at a time, tailoring each resume and cover letter by hand. It took hours
         per application. I was burning out and the market was brutal, 150+ applicants per posting
         for remote tech roles. So I built a tool to automate the parts that don't need a human.
-        Over 2.5 months, the pipeline processed 279 tailored applications, 25 per week, and
-        helped me land 8 hiring manager interviews. This is the story of building it, using it,
+        Over 4.5 months, the pipeline processed 414 tailored applications, about 21 per week,
+        and helped me land 10 hiring-manager-round interviews and one accepted offer. This is the story of building it, using it,
         and what it taught me about AI workflow engineering.
       </p>
       <div class="hero-links">
@@ -51,6 +51,7 @@
         <a href="#engineering">Engineering Decisions</a>
         <a href="#impact">Impact</a>
         <a href="#dashboard">Dashboard</a>
+        <a href="/portfolio/projects/job-search.html">Full Search Story</a>
         <a href="https://github.com/maughtycat/ai-job-pipeline" target="_blank">GitHub Repo</a>
       </div>
     </div>
@@ -60,16 +61,16 @@
     <div class="container">
       <div class="case-study-stats">
         <div class="stat-card">
-          <div class="stat-number">279</div>
-          <div class="stat-label">Tailored Applications</div>
+          <div class="stat-number">414</div>
+          <div class="stat-label">Applications</div>
         </div>
         <div class="stat-card">
-          <div class="stat-number">25/week</div>
-          <div class="stat-label">Applications Per Week</div>
+          <div class="stat-number">4.5 mo</div>
+          <div class="stat-label">Active Search</div>
         </div>
         <div class="stat-card">
-          <div class="stat-number">8</div>
-          <div class="stat-label">HM Interviews</div>
+          <div class="stat-number">1</div>
+          <div class="stat-label">Offer Accepted</div>
         </div>
       </div>
     </div>
@@ -114,7 +115,7 @@
          breakdown by category, a reasoning string, and red flags. A score of 70+ means
          worth applying. Below 50 means skip. The red flags surface dealbreakers before
          I waste time: "requires 8+ years SWE experience," "requires CS degree," "onsite
-         only." I applied to 279 jobs. The scorer saved me from applying to hundreds more
+         only." I applied to 414 jobs. The scorer saved me from applying to hundreds more
          that weren't worth the effort.</p>
 
       <h3 style="font-family: var(--font-heading); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 28px 0 16px;">Material Generation</h3>
@@ -153,7 +154,7 @@
          tailored materials. The pipeline processes a job posting in under 30 seconds.
          The tracker logs every application with status, fit score, and notes. Stats
          command shows applications per week, response rates, and average fit scores.
-         Used daily for 2.5 months across 279 applications.</p>
+         Used daily for 4.5 months across 414 applications.</p>
 
       <h3 style="font-family: var(--font-heading); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 28px 0 16px;">Unemployment Compliance (RESEA)</h3>
       <p>State unemployment agencies require documented proof of job search activity.
@@ -220,24 +221,24 @@
   <section class="section" id="impact">
     <div class="container">
       <h2 class="section-header">Impact</h2>
-      <p>The real numbers from 2.5 months of actual usage.</p>
+      <p>The real numbers from 4.5 months of actual usage.</p>
 
       <div style="margin-top: 24px;">
         <div class="project-card" style="border-bottom: none; padding-bottom: 0; margin-bottom: 24px;">
           <h3>Pipeline Stats</h3>
-          <p><strong>279</strong> tailored applications, June 1 &ndash; August 15, 2026</p>
-          <p><strong>25</strong> applications per week (5 per weekday)</p>
-          <p><strong>10</strong> completed recruiter screens</p>
-          <p><strong>8</strong> advanced to hiring manager interviews (80% conversion)</p>
-          <p><strong>1</strong> take-home + deep dive (Harvey)</p>
-          <p><strong>1</strong> currently interviewing (Archive)</p>
+          <p><strong>414</strong> tailored applications, June 1 – October 14, 2026</p>
+          <p><strong>~21</strong> applications per week (19.3-week search, 17 logged pause days)</p>
+          <p><strong>15</strong> first conversations (screens and first-round interviews)</p>
+          <p><strong>10</strong> advanced to hiring-manager rounds (67% conversation-to-HM)</p>
+          <p><strong>2</strong> processes went past the HM round (Harvey take-home, WWT panel)</p>
+          <p><strong>1</strong> offer accepted (World Wide Technology, October 16, 2026)</p>
         </div>
 
         <div class="project-card" style="border-bottom: none; padding-bottom: 0; margin-bottom: 24px;">
           <h3>The Numbers That Matter</h3>
-          <p>8 out of 10 recruiters who picked up the phone passed me to the hiring manager.
-             The one exception was Customer.io, where the HM had a hard requirement to code
-             without AI tools, a filter not mentioned in the job description.</p>
+          <p>15 first conversations, and 10 of those reached the hiring manager (67%).
+             Customer.io's screen ended after five minutes: the hiring manager required coding
+             without AI tools, a filter that was not in the job description.</p>
           <p style="margin-top: 12px;">The pipeline didn't just increase volume. It increased
              the quality of each application. Every posting got a tailored resume, a tailored
              cover letter, and a relevance score before I decided whether to apply.</p>
@@ -245,10 +246,10 @@
 
         <div class="project-card" style="border-bottom: none; padding-bottom: 0; margin-bottom: 24px;">
           <h3>What It Didn't Fix</h3>
-          <p>83 template/generic rejections. Companies that never looked at the materials.
-             Roles that were stretches. Market conditions that made remote-only positions
-             brutally competitive. The tool didn't magic away a tough market. It let me
-             play the volume game without sacrificing quality.</p>
+          <p>204 rejections, 190 of them before a human ever spoke to me. Companies that
+             never looked at the materials. Roles that were stretches. Market conditions
+             that made remote-only positions brutally competitive. The tool didn't magic
+             away a tough market. It let me play the volume game without sacrificing quality.</p>
         </div>
       </div>
     </div>
@@ -284,10 +285,10 @@
          every application-specific question), and SQLite-backed application tracker with RESEA audit export. The
          pipeline uses OpenRouter for LLM access (user brings their own key), Pydantic for output
          validation, and Streamlit for a visual dashboard. Human-in-the-loop design: the tool
-         handles research and drafting, the human handles judgment and submission. 279 tailored
-         applications over 2.5 months, 25 per week, 8 hiring manager interviews, 80%
-         recruiter-to-HM conversion. Code reviewed with automated audit, 3 of 4 findings applied.
-         ~824 lines across 8 files. Tools: Python, OpenRouter, SQLite, Pydantic, Streamlit, Git.</p>
+         handles research and drafting, the human handles judgment and submission. 414 tailored
+         applications over 4.5 months, ~21 per week, 10 hiring-manager rounds, 67%
+         conversation-to-HM conversion. Code reviewed with automated audit. ~1,333 lines across
+         12 files. Tools: Python, OpenRouter, SQLite, Pydantic, Streamlit, Git.</p>
     </div>
   </section>
 

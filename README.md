@@ -12,7 +12,7 @@ This portfolio showcases my work building documentation systems and AI-driven co
 
 ### [AI Job Application Pipeline](https://maughtycat.github.io/portfolio/projects/ai-job-pipeline.html)
 
-An AI-powered job application pipeline I built and used during my own job search. Parses job postings, scores relevance against a profile, generates tailored resume bullets, cover letters, and application answers, and tracks every application through the pipeline. Processed 279 tailored applications in 2.5 months, landing 8 hiring manager interviews with 80% recruiter-to-HM conversion.
+An AI-powered job application pipeline I built and used during my own job search. Parses job postings, scores relevance against a profile, generates tailored resume bullets, cover letters, and application answers, and tracks every application through the pipeline. Processed 414 tailored applications over 4.5 months, landing 15 first conversations, 10 hiring-manager rounds, and one accepted offer (67% conversation-to-HM conversion).
 
 **Highlights:**
 - Multi-stage LLM pipeline: parse, score, generate — with structured JSON output validation
