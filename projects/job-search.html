@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 2026 Job Search, Post-Mortem | Kara Novotny</title>
+<meta name="description" content="Post-mortem of my 2026 job search: 414 applications, 4.5 months, 15 first conversations, one accepted offer. The funnel, the market behind it, and how a built system changed the outcome.">
+<link rel="stylesheet" href="/portfolio/css/style.css">
+<link rel="icon" type="image/svg+xml" href="/portfolio/assets/favicon.svg">
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\\\"token\\\": \\\"56e05d61c293454f9ed991f4ff159297\\\"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/portfolio/index.html" class="site-name">Kara Novotny</a>
+    <nav class="nav-links">
+      <a href="/portfolio/about.html">About</a>
+      <a href="/portfolio/faq.html">FAQ</a>
+      <a href="/portfolio/projects/cosh.html">CoSH</a>
+      <a href="/portfolio/projects/redwood.html">Redwood</a>
+      <a href="/portfolio/projects/ai-job-pipeline.html">Pipeline</a>
+      <a href="/portfolio/projects/job-search.html" class="active">Job Search</a>
+      <a href="/portfolio/projects/ai-workflow.html">Workflow</a>
+      <a href="/portfolio/samples.html">Writing</a>
+      <a href="/portfolio/resume.html">Resume</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">//</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="container">
+      <h1>The 2026 Job<br><span class="accent">Search</span></h1>
+      <p class="hero-subtitle">414 applications, 4.5 months, one accepted offer, in a market where the average tech search runs 9.7 months.</p>
+      <p class="hero-intro">
+        I was laid off in June 2026, the second time in three years. Same mortgage, same
+        fear, a shorter clock. Last time I searched for 12 months with pen and paper
+        methods. This time I had spent a year building a system, and the system went to
+        work: score the fit before I spend an hour, draft the materials, track everything,
+        keep the judgment human. This page is the full accounting of what happened, the
+        funnel the search actually produced, and an honest answer to the question
+        underneath: did the tool help, or did I just get lucky?
+      </p>
+      <div class="hero-links">
+        <a href="#situation">The Situation</a>
+        <a href="#why-ai">Why AI</a>
+        <a href="#last-time">Last Time vs This Time</a>
+        <a href="#approach">The Approach</a>
+        <a href="#funnel">The Funnel</a>
+        <a href="#got-real">Where It Got Real</a>
+        <a href="#how-helped">How It Helped</a>
+        <a href="#market">What the Market Taught Me</a>
+        <a href="#numbers">The Numbers</a>
+        <a href="#sources">Sources</a>
+        <a href="#closing">Closing</a>
+        <a href="/portfolio/projects/ai-job-pipeline.html">Pipeline Case Study</a>
+        <a href="https://github.com/maughtycat/ai-job-pipeline" target="_blank">GitHub Repo</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="border-top: none; padding-top: 40px;">
+    <div class="container">
+      <div class="case-study-stats">
+        <div class="stat-card">
+          <div class="stat-number">414</div>
+          <div class="stat-label">Applications</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">15</div>
+          <div class="stat-label">First Conversations</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">10</div>
+          <div class="stat-label">HM Rounds</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">1</div>
+          <div class="stat-label">Offer Accepted</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="situation">
+    <div class="container">
+      <h2 class="section-header">The Situation</h2>
+      <p>June 2026. Laid off, mortgage, unemployment benefits with a deadline. The second
+         layoff in three years, which adds a specific kind of pressure: you have already
+         survived this once, so there is no room for pretending it is not happening.
+         I started applying the same week, the same way everyone does, by hand. Read the
+         posting, decide on fit, pick the bullets, draft the letter, fill the form, log
+         it. Hours per application, and the market was not rewarding the effort.</p>
+
+      <p style="margin-top: 16px;">The difference this time was what was already on my
+         machine. The AI habit started nearly two years before the layoff, and the
+         agentic work six months before it. The next section makes that case with dates
+         and exhibits, because the timeline is the whole point.</p>
+    </div>
+  </section>
+
+  <section class="section" id="why-ai">
+    <div class="container">
+      <h2 class="section-header">Why AI, Not the Hype</h2>
+      <p>I started using AI in earnest in August 2024, the month Redwood hired me,
+         ChatGPT and Gemini in the daily work. I started building with it personally
+         in July 2025: AI-assisted songs with Veo-generated music video clips that I
+         edited myself, roughly ten-song concept albums with plots, where I wrote
+         the lyrics, the story, and the progression and AI handled structure and
+         rhymes. The one I like most is a <a href="https://www.youtube.com/@SkylarkFinchie" target="_blank">bilingual album</a>
+         about the history of Argentina told through one man and his family, written
+         in Spanish I cannot speak. I took French in high school. I brought the
+         research, the plot, and the love affair with Buenos Aires, and Copilot
+         helped the lines sound native. I started using agentic AI in December 2025:
+         Codex first, then Claude Code, then Cursor, which Redwood provided, all
+         before the layoff, and Hermes Agent after it. Four milestones, every one
+         of them before the June 2026 layoff, the first three before AI became the
+         headline explanation for every tech cut that year. The sequence matters to
+         me because it is the opposite of a bandwagon.</p>
+
+      <p style="margin-top: 16px;">The exhibits are public. FlareGuard shipped into
+         production at Redwood, in the documentation and education department, about
+         10 people, and the escalations it was built to catch dropped noticeably.
+         CoSH, a solo-built React and TypeScript agent runtime, started in December
+         2025 and I am still building it in October 2026, a practice rather than a
+         prop (see the <a href="/portfolio/projects/cosh.html">CoSH case study</a>).
+         My <a href="https://github.com/maughtycat" target="_blank">GitHub</a> stays
+         audit-clean. Best-practices research I did turned into versioned workflow
+         files I actually run. For tooling I chose
+         <a href="https://github.com/maughtycat/ai-job-pipeline" target="_blank">OpenRouter</a>
+         over single-vendor options for token optimization, the same
+         bring-your-own-key reasoning I wrote up in the
+         <a href="/portfolio/projects/ai-job-pipeline.html">pipeline case study</a>.</p>
+
+      <p style="margin-top: 16px;">The part I want highlighted is how I use AI, not
+         just that I do. Guardrails: FlareGuard's quality scoring and hallucination
+         detection. Validation schemas: CoSH's structured JSON validation, Pydantic
+         in the pipeline. Good prompts and memory: versioned skills and workflow
+         files. That is my engineering answer to vibe coding, and I only need to say
+         it once. The market is telling employers the same thing:
+         <a href="https://news.linkedin.com/2026/Skills-on-the-rise-2026" target="_blank">LinkedIn's
+         2026 Skills on the Rise list puts AI governance among its fastest-growing
+         skills</a>. That demand is about the practice, not a job title, and I am
+         not claiming a title I do not have.</p>
+
+      <p style="margin-top: 16px;">I am not arguing I was early.
+         <a href="https://hai.stanford.edu/ai-index/2026-ai-index-report" target="_blank">Organizational
+         AI adoption was already at 88% by 2026</a>. I am arguing the work started
+         before the layoff and did not stop after it, and every claim above points
+         at a page I already published.</p>
+    </div>
+  </section>
+
+  <section class="section" id="last-time">
+    <div class="container">
+      <h2 class="section-header">Last Time vs This Time</h2>
+      <p>In September 2023 I was laid off and started applying to Technical Writer
+         roles by hand, one application at a time. It took 12 months, and I landed
+         in August 2024. In June 2026 I was laid off again, same mortgage, and this
+         time the search took 4.5 months to an accepted offer. Both searches were
+         hard, in different ways, and the comparison only means something if I am
+         honest about both markets.</p>
+
+      <p style="margin-top: 16px;">I began applying in September 2023, months into
+         what would become the record year for tech layoffs:
+         <a href="https://layoffs.fyi/" target="_blank">265,660 employees cut across
+         1,194 companies, tracked by layoffs.fyi</a>. January 2023 alone lost more
+         than
+         <a href="https://www.businessinsider.com/tech-layoffs-way-down-from-2023-why-so-grim-2024-2" target="_blank">108,000
+         tech jobs</a>. 2024's drop to
+         <a href="https://layoffs.fyi/" target="_blank">152,922</a> read as recovery
+         on the chart, but US tech postings had already entered what
+         <a href="https://hiringlab.indeed.com/2025/07/30/the-us-tech-hiring-freeze-continues/" target="_blank">Indeed
+         Hiring Lab would later name a three-year hiring freeze, down 36% below their
+         February 2020 level</a>. The national median unemployment claim ran
+         <a href="https://www.bls.gov/spotlight/2024/unemployment-duration-in-the-pandemic-a-look-at-jobseeker-demographics/home.htm" target="_blank">8.9
+         weeks in 2023, per the BLS</a>. Mine ran 52. And the Bureau of Labor
+         Statistics had already projected
+         <a href="https://www.bls.gov/ooh/media-and-communication/technical-writers.htm" target="_blank">1%
+         growth for technical writers</a>.</p>
+
+      <p style="margin-top: 16px;">This time the weather was different and in some
+         ways worse. Layoffs.fyi
+         <a href="https://layoffs.fyi/2026-layoffs/" target="_blank">tracked 133,217
+         tech employees cut from January to October 2026, already past all of 2025's
+         122,606</a>. Challenger counted US technology cuts
+         <a href="https://www.ciodive.com/news/technology-hiring-may-AI-layoffs/822163/" target="_blank">up
+         66% year over year through May 2026</a>. Open roles now
+         <a href="https://www.hrdive.com/news/recruiters-see-job-applications-triple-to-more-than-300-per-role/820096/" target="_blank">receive
+         more than 300 applications on average, and applications per hire have tripled
+         since 2021</a>. The average tech job search in 2026
+         <a href="https://unitedwaynca.org/blog/how-long-does-it-take-to-find-a-job-2026-survey/" target="_blank">runs
+         9.7 months, per a United Way NCA survey of 1,000 US job seekers</a>. I did
+         not need a survey to believe it, but it is good to know I was not imagining
+         the room.</p>
+
+      <p style="margin-top: 16px;">What actually changed was on my side of the table.
+         I sent 34 applications at technical-writer titles. One produced a recruiter
+         screen, at Firecrawl. None produced an interview, and none produced an offer.
+         The content and knowledge roles I applied to instead produced 63 applications
+         and 3 conversations. The technical writing lane was not a funnel problem.
+         It was closed.</p>
+
+      <p style="margin-top: 16px;">I have wondered whether recruiters saw more AI
+         than technical writer on my profile. That wondering has a fair basis: my
+         resume and portfolio foreground the AI work. I do not know what was in
+         anyone's head, and I am not going to pretend I do. What I know is the
+         market explanation above, and that the offer came from an AI Native
+         Engineering role where the recruiter reached out after reviewing my resume.</p>
+
+      <p style="margin-top: 16px;">I am not writing off the craft. Seven years of
+         documentation work is why I know what good content engineering looks like.
+         The point is what the market for that title did, not what the work is worth.</p>
+    </div>
+  </section>
+
+  <section class="section" id="approach">
+    <div class="container">
+      <h2 class="section-header">The Approach</h2>
+      <p>The target was 5 applications per weekday, which sounds small until you
+         demand that every one of them is tailored. Score before applying: the
+         pipeline reads the posting, scores fit against my profile with reasoning
+         and red flags, and if the score says skip, the hour I would have spent
+         goes somewhere real instead. The tool drafts the resume bullets, the cover
+         letter, and the answers to the posting's questions. I judge every word
+         before it leaves my hands. For the mechanics of how it is built, the
+         <a href="/portfolio/projects/ai-job-pipeline.html">full pipeline case study</a>
+         covers the architecture.</p>
+
+      <p style="margin-top: 16px;">One timeline note so nothing is oversold: the
+         workflow scripts ran throughout the search, from June onward. The public
+         GitHub repo is the cleaned-up version I published on August 15, 2026.</p>
+    </div>
+  </section>
+
+  <section class="section" id="funnel">
+    <div class="container">
+      <h2 class="section-header">The Funnel</h2>
+      <p>Every number below comes from my own tracking data, validated with a chain
+         check: the flows in always equal the flows out. 414 applications entered,
+         15 produced a held conversation, 10 reached a hiring manager, 2 went past
+         it, 1 ended in an accepted offer.</p>
+      <img src="/portfolio/assets/job-search-sankey.svg" alt="Sankey diagram: 414 applications flow to 15 conversations, 10 hiring-manager rounds, 2 deep rounds, and 1 accepted offer" width="100%">
+      <table style="width: 100%; margin-top: 24px; border-collapse: collapse;">
+        <tr><td style="padding: 6px 0;">Applications</td><td style="text-align: right;">414</td></tr>
+        <tr><td style="padding: 6px 0;">Never answered</td><td style="text-align: right;">209</td></tr>
+        <tr><td style="padding: 6px 0;">Rejected before a conversation</td><td style="text-align: right;">190</td></tr>
+        <tr><td style="padding: 6px 0;">Held conversations</td><td style="text-align: right;">15</td></tr>
+        <tr><td style="padding: 6px 0;">Stopped at the screen stage</td><td style="text-align: right;">5</td></tr>
+        <tr><td style="padding: 6px 0;">Reached a hiring manager</td><td style="text-align: right;">10</td></tr>
+        <tr><td style="padding: 6px 0;">Went past the hiring manager</td><td style="text-align: right;">2</td></tr>
+        <tr><td style="padding: 6px 0;">Offers accepted</td><td style="text-align: right;">1</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="section" id="got-real">
+    <div class="container">
+      <h2 class="section-header">Where It Got Real</h2>
+      <p>Funnel numbers are abstractions. The conversations were not. Figma's
+         hiring manager screen, and what the follow-up email revealed about how
+         early-stage teams actually staff knowledge work. Harvey's take-home and
+         deep dive, the hardest I worked for any company in this search.
+         HopSkipDrive, whose 10-slide presentation happened inside the hiring
+         manager round rather than after it. MRO's three calls across three weeks.
+         Mercury's hiring manager round. The content and knowledge lane produced
+         real conversations too, at Ashley Digital, Archive, and Fabric Health.</p>
+
+      <p style="margin-top: 16px;">And the close. World Wide Technology's recruiter
+         reached out after an earlier rejection for a different role. The process
+         ran recruiter screen, hiring manager, a seven-person technical panel, a
+         presentation on using skills files as part of an AI workflow, and an offer
+         the same day, 2026-10-16. No interviewers are named here, by design. The
+         companies showed up, and so did I.</p>
+    </div>
+  </section>
+
+  <section class="section" id="how-helped">
+    <div class="container">
+      <h2 class="section-header">How the Pipeline Actually Helped</h2>
+
+      <h3 style="font-family: var(--font-heading); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 16px;">Volume Without Burnout</h3>
+      <p>Last time every application cost hours of manual tailoring and the math
+         never worked. This time the pipeline made 414 tailored applications
+         survivable over 19.3 weeks, and the score gate meant effort went where fit
+         was real. The external picture explains why that matters:
+         <a href="https://www.gem.com/blog/key-takeaways-from-the-2026-recruiting-benchmarks-report" target="_blank">recruiters
+         handle 93% more applications than in 2021 while hires per recruiter fell
+         43%, per Gem's 2026 benchmarks</a>, and
+         <a href="https://huntr.co/research/job-search-trends-q2-2025" target="_blank">tailored
+         resumes converted at 5.75% versus 2.68% for generic ones, per Huntr's Q2
+         2025 report</a>. Tailoring was this pipeline's thesis, and someone else's
+         data stands behind it.</p>
+
+      <h3 style="font-family: var(--font-heading); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 28px 0 16px;">The Artifacts Did Double Duty</h3>
+      <p>The portfolio, the open-source repo, FlareGuard, CoSH, all built partly
+         with the AI-augmented workflow, became interview proof rather than
+         decoration. Recruiters mentioned the source code repo unprompted. The
+         take-home and the final presentation were both answered with things I had
+         actually built. The mechanism is measurable:
+         <a href="https://www.linkedin.com/top-content/recruitment-hr/talent-acquisition-metrics/applicant-conversion-rates/" target="_blank">sourced
+         candidates reach interview at about 25% according to LinkedIn's applicant
+         conversion data</a>, several times the cold-inbound rate, and artifacts are
+         what make a candidate sourceable. That is what happened when the WWT
+         recruiter reached out. Not luck, a mechanism.</p>
+
+      <h3 style="font-family: var(--font-heading); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 28px 0 16px;">AI as a Sparring Partner, Not a Crutch</h3>
+      <p>The market said no to the writer title and the workflow kept producing the
+         next iteration: new resume angles, new portfolio pages, a repo that stayed
+         audit-clean, this very tracker. Context: organizational AI adoption reached
+         <a href="https://hai.stanford.edu/ai-index/2026-ai-index-report" target="_blank">88%
+         per Stanford's 2026 AI Index</a> and
+         <a href="https://www.gallup.com/workplace/712736/organizational-adoption-jumps-six-points.aspx" target="_blank">52%
+         of US workers now use AI in their role, per Gallup</a>. Using AI was not
+         the differentiator by 2026. Shipping with it was. The pipeline could not
+         fix a closed lane. It made the open lane winnable and kept the search
+         mechanical instead of emotional.</p>
+
+      <h3 style="font-family: var(--font-heading); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 28px 0 16px;">What It Did Not Do</h3>
+      <p>It did not generate interviews from thin air. 209 applications never got
+         a human reply, and part of that silence was structural:
+         <a href="https://www.ashbyhq.com/talent-trends-report/reports/ghost-jobs" target="_blank">Ashby's
+         own platform data found 18% of jobs were never filled</a>. I will not
+         pretend I know how many of my 209 were ghosts; nobody can. The honest
+         claim is narrower and stronger. Same person, same skills, 12 months last
+         time, 4.5 months this time, against more competition per posting and slower
+         rehiring, because the system turned a search into a build. The pipeline
+         made volume possible and the artifacts made conversations possible.
+         Neither one forced an offer.</p>
+    </div>
+  </section>
+
+  <section class="section" id="market">
+    <div class="container">
+      <h2 class="section-header">What the Market Taught Me</h2>
+      <p>190 of 414 applications were rejected before anyone spoke to me. That
+         ratio is the market's most honest statement, and one screen made it
+         personal. One screen ended after five minutes. The company was Customer.io,
+         the recorded role Technical Operations Manager. The recruiter asked what I
+         had built, then asked whether I could code without AI. My honest answer,
+         the one I would give again: everything I have coded was AI-assisted. I
+         architect the direction while AI does the coding. The hiring manager's
+         filter required coding without AI, a filter that was not in the job
+         description, and the call ended. The role was rated strong on LLM, agentic
+         systems, and prompt engineering in my own tracker.</p>
+
+      <p style="margin-top: 16px;">One cousin of that story: the CivicPlus screen
+         ran under a no-AI-tools-during-interview policy. Same era, same
+         applicant, opposite instructions.</p>
+
+      <p style="margin-top: 16px;">Then the counter-verdict that pairs with it. At
+         World Wide Technology the technical interview was to use AI to solve a
+         prompt while the team watched my workflow. Same builder, opposite verdicts,
+         and the company that watched me work with AI hired me. That pairing is the
+         responsible-AI payoff: guardrails and validation schemas are why
+         AI-assisted is a strength, not a confession. Conversations came from
+         demonstrated building, not from polish.</p>
+
+      <p style="margin-top: 16px;">The story's closing irony:
+         <a href="https://layoffs.fyi/ai-layoffs/" target="_blank">93,151 of the 2026
+         tech layoffs were attributed to AI</a>, and AI also built the portfolio,
+         the repo, and the pipeline that got me hired. Keep it honest, not bitter.</p>
+    </div>
+  </section>
+
+  <section class="section" id="numbers">
+    <div class="container">
+      <h2 class="section-header">The Numbers</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <tr><td style="padding: 6px 0;">Applications</td><td style="text-align: right;">414</td></tr>
+        <tr><td style="padding: 6px 0;">First conversations</td><td style="text-align: right;">15 (3.6%)</td></tr>
+        <tr><td style="padding: 6px 0;">Reached a hiring manager</td><td style="text-align: right;">10 (67% of conversations)</td></tr>
+        <tr><td style="padding: 6px 0;">Deep rounds</td><td style="text-align: right;">2</td></tr>
+        <tr><td style="padding: 6px 0;">Offers accepted</td><td style="text-align: right;">1 (0.24%)</td></tr>
+        <tr><td style="padding: 6px 0;">Unique companies</td><td style="text-align: right;">364</td></tr>
+        <tr><td style="padding: 6px 0;">Search span</td><td style="text-align: right;">19.3 weeks, June 1 to October 14, 2026</td></tr>
+        <tr><td style="padding: 6px 0;">Postings with a listed salary range</td><td style="text-align: right;">304</td></tr>
+        <tr><td style="padding: 6px 0;">Benchmark, this search</td><td style="text-align: right;">3.6% application-to-conversation vs the
+            <a href="https://www.careerplug.com/recruiting-metrics-and-kpis/" target="_blank">3% applicant-to-interview norm, CareerPlug</a></td></tr>
+        <tr><td style="padding: 6px 0;">Benchmark, market speed</td><td style="text-align: right;">4.5 months vs the
+            <a href="https://unitedwaynca.org/blog/how-long-does-it-take-to-find-a-job-2026-survey/" target="_blank">9.7-month average tech search</a></td></tr>
+        <tr><td style="padding: 6px 0;">Baseline, previous search</td><td style="text-align: right;">Sept 2023 to Aug 2024, 12 months, manual, qualitative only</td></tr>
+      </table>
+      <p style="margin-top: 16px;">I hit benchmark in a frozen market. That is the
+         quiet win underneath the offer.</p>
+    </div>
+  </section>
+
+  <section class="section" id="sources">
+    <div class="container">
+      <h2 class="section-header">Sources</h2>
+      <p style="font-size: 14px; line-height: 1.8;">
+        <a href="https://unitedwaynca.org/blog/how-long-does-it-take-to-find-a-job-2026-survey/" target="_blank">United Way NCA 2026 Job Search Survey</a> (9.7 months, n=1,000, a survey not government data)<br>
+        <a href="https://layoffs.fyi/" target="_blank">Layoffs.fyi year totals</a> (2023: 265,660; 2024: 152,922; 2025: 122,606; global tech and startup tracking)<br>
+        <a href="https://layoffs.fyi/2026-layoffs/" target="_blank">Layoffs.fyi 2026 tracker</a> (133,217, January to October)<br>
+        <a href="https://layoffs.fyi/ai-layoffs/" target="_blank">Layoffs.fyi AI layoffs tracker</a> (93,151 attributed to AI)<br>
+        <a href="https://hiringlab.indeed.com/2025/07/30/the-us-tech-hiring-freeze-continues/" target="_blank">Indeed Hiring Lab, The US Tech Hiring Freeze Continues</a><br>
+        <a href="https://www.bls.gov/ooh/media-and-communication/technical-writers.htm" target="_blank">BLS Occupational Outlook Handbook, Technical Writers</a><br>
+        <a href="https://www.bls.gov/spotlight/2024/unemployment-duration-in-the-pandemic-a-look-at-jobseeker-demographics/home.htm" target="_blank">BLS, unemployment duration in 2023</a> (8.9-week median)<br>
+        <a href="https://www.bls.gov/news.release/empsit.t12.htm" target="_blank">BLS Table A-12, duration of unemployment</a><br>
+        <a href="https://www.ciodive.com/news/technology-hiring-may-AI-layoffs/822163/" target="_blank">Challenger, Gray and Christmas via CIOdive</a> (tech cuts up 66% year over year through May 2026)<br>
+        <a href="https://www.businessinsider.com/tech-layoffs-way-down-from-2023-why-so-grim-2024-2" target="_blank">Business Insider</a> (January 2023, 108,000+ tech jobs)<br>
+        <a href="https://www.careerplug.com/recruiting-metrics-and-kpis/" target="_blank">CareerPlug 2025 Recruiting Metrics Report</a> (3% applicant-to-interview)<br>
+        <a href="https://www.ashbyhq.com/talent-trends-report/reports/2023-recruiter-productivity-trends-report" target="_blank">Ashby 2026 Talent Trends, recruiter productivity</a> (interviews per technical hire up 52%, 11.6 to 17.6, 109M applications)<br>
+        <a href="https://www.ashbyhq.com/talent-trends-report/reports/ghost-jobs" target="_blank">Ashby, how common are ghost jobs</a> (18% of jobs never filled)<br>
+        <a href="https://www.hrdive.com/news/recruiters-see-job-applications-triple-to-more-than-300-per-role/820096/" target="_blank">HR Dive reporting Ashby data</a> (300+ applications per role, tripled since 2021)<br>
+        <a href="https://www.gem.com/blog/key-takeaways-from-the-2026-recruiting-benchmarks-report" target="_blank">Gem 2026 Recruiting Benchmarks</a> (93% more applications, 43% fewer hires per recruiter)<br>
+        <a href="https://www.linkedin.com/top-content/recruitment-hr/talent-acquisition-metrics/applicant-conversion-rates/" target="_blank">LinkedIn applicant conversion data</a> (sourced candidates 25% interview rate)<br>
+        <a href="https://hai.stanford.edu/ai-index/2026-ai-index-report" target="_blank">Stanford HAI 2026 AI Index</a> (88% organizational adoption)<br>
+        <a href="https://www.gallup.com/workplace/712736/organizational-adoption-jumps-six-points.aspx" target="_blank">Gallup workplace survey</a> (52% of US workers use AI in their role)<br>
+        <a href="https://huntr.co/research/job-search-trends-q2-2025" target="_blank">Huntr Q2 2025 Job Search Trends Report</a> (5.75% vs 2.68% conversion)<br>
+        <a href="https://news.linkedin.com/2026/Skills-on-the-rise-2026" target="_blank">LinkedIn 2026 Skills on the Rise</a> (AI governance among fastest-growing skills, reported list, qualitative use only)<br>
+        Baseline rows (12 months, manual, Sept 2023 to Aug 2024) are my own experience, not drawn from any dataset. All funnel numbers come from my private tracker, aggregates only.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="closing">
+    <div class="container">
+      <h2 class="section-header">Closing</h2>
+      <p>I accepted the offer on 2026-10-16 and start 2026-11-02 as Senior Analyst,
+         AI Native Engineering at World Wide Technology. The pipeline and this
+         tracker are why the volume was survivable. The repo and the portfolio are
+         why the conversations happened. The system is reusable, and it is already
+         reused: the code is open, the method is written down, and the next search,
+         if there is one, starts from a build instead of a blank page.</p>
+      <p style="margin-top: 16px;">
+        <a href="/portfolio/projects/ai-job-pipeline.html">Full pipeline case study</a> |
+        <a href="https://github.com/maughtycat/ai-job-pipeline" target="_blank">Pipeline repo</a> |
+        <a href="/portfolio/resume.html">Resume</a>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="mailto:karaashbeck@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/kashbeck">LinkedIn</a>
+        <a href="https://github.com/maughtycat">GitHub</a>
+        <a href="https://www.youtube.com/@SkylarkFinchie">YouTube</a>
+      </div>
+      <div class="footer-copy">© 2026 Kara Novotny</div>
+    </div>
+  </div>
+</footer>
+
+<script src="/portfolio/js/script.js"></script>
+
+</body>
+</html>
