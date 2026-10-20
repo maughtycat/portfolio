@@ -38,8 +38,8 @@
       <p class="hero-intro">
         I was laid off in June 2026 and immediately started applying to jobs. I was applying
         manually, one at a time, tailoring each resume and cover letter by hand. It took hours
-        per application. I was burning out and the market was brutal, 150+ applicants per posting
-        for remote tech roles. So I built a tool to automate the parts that don't need a human.
+        per application. I was burning out and the market was brutal, 300+ applicants per posting
+         was the going rate. So I built a tool to automate the parts that don't need a human.
         Over 4.5 months, the pipeline processed 414 tailored applications, about 21 per week,
         and helped me land 10 hiring-manager-round interviews and one accepted offer. This is the story of building it, using it,
         and what it taught me about AI workflow engineering.
@@ -79,8 +79,10 @@
   <section class="section" id="situation">
     <div class="container">
       <h2 class="section-header">The Situation</h2>
-      <p>June 2026. Laid off, mortgage, unemployment benefits with a hard deadline. The market
-         was brutal for remote-only tech jobs, 150+ applicants per posting. I was applying
+      <p>June 2026. Laid off, mortgage, unemployment benefits with a deadline. The market
+         was brutal: open roles drew 300+ applications on average (Ashby data, reported by
+         <a href="https://www.hrdive.com/news/recruiters-see-job-applications-triple-to-more-than-300-per-role/820096/" target="_blank">HR Dive</a>).
+         I was applying
          manually: read the posting, decide if it's a fit, figure out which resume bullets
          apply, draft a cover letter, track the application. Every single one took hours.
          I was burning out before I'd even gotten to the interview stage.</p>
@@ -166,8 +168,8 @@
       <h3 style="font-family: var(--font-heading); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 28px 0 16px;">Salary Negotiation Context</h3>
       <p>The tracker stores salary ranges for every posting. When negotiating an offer,
          I can quickly pull the salary data for similar roles I applied to: "Based on
-         199 postings with salary data, the average range for this role type is
-         $118K-$165K." Data-backed negotiation beats gut feeling.</p>
+         the 291 salary ranges I captured, the average listed range was $119K to $165K."
+         Data-backed negotiation beats gut feeling.</p>
     </div>
   </section>
 
@@ -215,6 +217,15 @@
          minutes. The fixes took 2. The point isn't that the code was bloated &mdash; it's
          that a 10-line review caught things I built in a hurry, and I knew which ones to
          fix and which ones didn't matter. That judgment is the skill.</p>
+
+      <p style="margin-top: 16px;">When the search concluded, I ran a second, deeper pass:
+         11 findings, 10 applied, one skipped. The keepers were data-integrity fixes:
+         validating status input so one typo can't poison the tracker, failing loudly
+         instead of printing fake success, and scoping updates so two applications to
+         the same company don't overwrite each other. I also wired Pydantic validation
+         in for real, so the tech table above describes code, not copywriting. Skipped:
+         a dependency version floor I couldn't verify without installing old releases.
+         Same lesson, bigger diff: knowing which findings matter is the skill.</p>
     </div>
   </section>
 
@@ -258,7 +269,9 @@
   <section class="section" id="dashboard">
     <div class="container">
       <h2 class="section-header">Live Dashboard</h2>
-      <p>Browse cached pipeline results and a curated tracking sample. No API key needed.</p>
+      <p>Browse cached pipeline results and a curated tracking sample. No API key needed.
+         The demo sleeps when idle and wakes on first click, so give it up to 30 seconds
+         if it has been resting.</p>
       <div style="margin-top: 24px; border: 1px solid var(--border-color, #333); border-radius: 8px; overflow: hidden;">
         <iframe
           src="https://ai-job-pipeline-kn.streamlit.app/?embedded=true"
