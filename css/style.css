@@ -10,7 +10,13 @@
   --text-muted: #999;
   --accent: #7c9e87;
   --accent-light: #a8c4b0;
+  --danger: #d46a6a;
+  --danger-tint: #231818;
+  --danger-edge: #4a2a2a;
+  --accent-tint: #1a1d1b;
+  --accent-edge: #303a33;
   --border: #2a2a2a;
+  --border-strong: #666666;
   --max-width: 720px;
   --font-body: 'Georgia', 'Times New Roman', serif;
   --font-heading: 'Helvetica Neue', 'Arial', sans-serif;
@@ -22,9 +28,15 @@
   --bg-alt: #f0f0f0;
   --text: #1a1a1a;
   --text-muted: #666;
-  --accent: #4a7c59;
-  --accent-light: #5a9a6a;
+  --accent: #3f6a4d;
+  --accent-light: #36704a;
+  --danger: #b03c3c;
+  --danger-tint: #f3e7e7;
+  --danger-edge: #e4c1c1;
+  --accent-tint: #e7ece9;
+  --accent-edge: #c2cfc6;
   --border: #ddd;
+  --border-strong: #8a8a8a;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -104,7 +116,7 @@ body {
 
 .theme-toggle {
   background: none;
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-strong);
   color: var(--text-muted);
   cursor: pointer;
   font-size: 14px;
@@ -534,20 +546,6 @@ body {
 .scannable-content.hidden {
   display: none;
 }
-.resume-footer-note {
-  margin-top: 40px;
-  padding: 20px;
-  background: var(--bg-alt);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  text-align: center;
-  font-size: 14px;
-  color: var(--text-muted);
-}
-.resume-footer-note a {
-  color: var(--accent-light);
-}
-
 /* ── REDWOOD CASE STUDY ─────────────────────────────────── */
 
 .case-study-stats {
@@ -588,8 +586,8 @@ body {
   border-radius: 6px;
   border: 1px solid var(--border);
 }
-.ba-box.before { background: rgba(192, 80, 80, 0.1); border-color: rgba(192, 80, 80, 0.3); }
-.ba-box.after { background: rgba(124, 158, 135, 0.1); border-color: rgba(124, 158, 135, 0.3); }
+.ba-box.before { background: var(--danger-tint); border-color: var(--danger-edge); }
+.ba-box.after { background: var(--accent-tint); border-color: var(--accent-edge); }
 .ba-box h4 {
   font-family: var(--font-heading);
   font-size: 12px;
@@ -597,7 +595,7 @@ body {
   letter-spacing: 1.5px;
   margin-bottom: 10px;
 }
-.ba-box.before h4 { color: #c05050; }
+.ba-box.before h4 { color: var(--danger); }
 .ba-box.after h4 { color: var(--accent); }
 .ba-box ul { padding-left: 16px; }
 .ba-box li { font-size: 14px; margin-bottom: 4px; color: var(--text-muted); }
@@ -612,14 +610,47 @@ body {
   line-height: 1.6;
   overflow-x: auto;
 }
-.toc-comparison .old { color: #c05050; }
+.toc-comparison .old { color: var(--danger); }
 .toc-comparison .new { color: var(--accent); }
 .toc-comparison .arrow { color: var(--text-muted); text-align: center; margin: 8px 0; }
+
+/* ── ACCESSIBILITY (WCAG 2.1 AA) ───────────────────────── */
+
+/* Links get a real color in both themes (browser default blue fails on dark) */
+a { color: var(--accent-light); }
+
+/* Inline text links must not rely on color alone (SC 1.4.1) */
+p a, li a, td a, .project-meta a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Keyboard focus must be visible (SC 2.4.7) */
+:focus-visible {
+  outline: 2px solid var(--accent-light);
+  outline-offset: 2px;
+}
+
+/* Skip-to-content (SC 2.4.1) */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 12px;
+  background: var(--accent);
+  color: var(--bg);
+  font-family: var(--font-heading);
+  font-size: 13px;
+  padding: 10px 16px;
+  border-radius: 0 0 6px 6px;
+  text-decoration: none;
+  z-index: 300;
+}
+.skip-link:focus { top: 0; }
 
 /* ── PRINT ──────────────────────────────────────────────── */
 
 @media print {
-  .site-header, .site-footer, .theme-toggle { display: none; }
+  .site-header, .site-footer, .theme-toggle, .skip-link { display: none; }
   body { background: #fff; color: #000; font-size: 11pt; }
   .hero { padding: 20px 0; }
   a { text-decoration: none; color: #000; }
